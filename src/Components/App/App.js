@@ -9,18 +9,15 @@ import { Button, Paper } from '@material-ui/core';
 function App() {
     return (
         <Container maxWidth="sm" className="App">
-            <Paper>
+            <div>
                 <img src={logo} className="App-logo" alt="logo" />
                 <Typography variant="h4" component="h1" gutterBottom>
-                    Create React App + Material-UI
+                    PartyPart. Split your duties.
                 </Typography>
                 <Button variant="contained" color="primary">
-                    Primary Button
+                    Разделить расходы
                 </Button>
-                <Button variant="contained" color="secondary">
-                    Secondary Button
-                </Button>
-            </Paper>
+            </div>
         </Container>
     );
 }
