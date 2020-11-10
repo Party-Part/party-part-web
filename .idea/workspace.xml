@@ -10,17 +10,33 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="217b336d-e72c-4ee1-8315-c684a45df6bd" name="Default Changelist" comment="">
+    <list default="true" id="217b336d-e72c-4ee1-8315-c684a45df6bd" name="Default Changelist" comment="Set primary button in HelloScreen">
+      <change afterPath="$PROJECT_DIR$/src/Components/hello/HelloScreen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/hello/HelloScreen.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/App/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/hello/HelloScreen.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/App/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/App/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/mvp" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1k0Zgvnxuj810jDOuvV6YMFjnbG" />
@@ -32,7 +48,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Components/hello" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -46,13 +62,42 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Components/hello" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Components/App" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/Components" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Jest.renders hello screen">
+    <configuration name="renders hello screen" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/Components/hello/HelloScreen.test.js" />
+      <test-names>
+        <test-name value="renders hello screen" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="renders learn react link (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/Components/hello/HelloScreen.test.js" />
+      <test-names>
+        <test-name value="renders learn react link" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="renders learn react link" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -68,6 +113,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.renders hello screen" />
+        <item itemvalue="Jest.renders learn react link (1)" />
         <item itemvalue="Jest.renders learn react link" />
       </list>
     </recent_temporary>
@@ -82,8 +129,17 @@
       <updated>1604839583572</updated>
       <workItem from="1604839584632" duration="2630000" />
       <workItem from="1604937999053" duration="84000" />
-      <workItem from="1604938084850" duration="643000" />
+      <workItem from="1604938084850" duration="887000" />
+      <workItem from="1605013506643" duration="3309000" />
     </task>
+    <task id="LOCAL-00001" summary="Set primary button in HelloScreen">
+      <created>1604938825044</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604938825044</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,26 +157,38 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Set primary button in HelloScreen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set primary button in HelloScreen" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1419" height="239" key="GridCell.Tab.0.bottom" timestamp="1604906838721">
-      <screen x="0" y="23" width="1440" height="824" />
+    <state x="430" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605020973618">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1604842600984" />
+    <state x="430" y="259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1605020973618" />
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605024111263">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1605024111263" />
+    <state width="1419" height="276" key="GridCell.Tab.0.bottom" timestamp="1605023725370">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="276" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1605023725370" />
     <state width="1419" height="239" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1604906838721" />
-    <state width="1419" height="239" key="GridCell.Tab.0.center" timestamp="1604906838720">
-      <screen x="0" y="23" width="1440" height="824" />
+    <state width="1419" height="276" key="GridCell.Tab.0.center" timestamp="1605023725369">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1604842600983" />
+    <state width="1419" height="276" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1605023725369" />
     <state width="1419" height="239" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1604906838720" />
-    <state width="1419" height="239" key="GridCell.Tab.0.left" timestamp="1604906838719">
-      <screen x="0" y="23" width="1440" height="824" />
+    <state width="1419" height="276" key="GridCell.Tab.0.left" timestamp="1605023725369">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1604842600982" />
+    <state width="1419" height="276" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1605023725369" />
     <state width="1419" height="239" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1604906838719" />
-    <state width="1419" height="239" key="GridCell.Tab.0.right" timestamp="1604906838721">
-      <screen x="0" y="23" width="1440" height="824" />
+    <state width="1419" height="276" key="GridCell.Tab.0.right" timestamp="1605023725370">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1604842600983" />
+    <state width="1419" height="276" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1605023725370" />
     <state width="1419" height="239" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1604906838721" />
     <state x="358" y="218" key="MultipleFileMergeDialog" timestamp="1604843772895">
       <screen x="0" y="0" width="1440" height="900" />
@@ -130,9 +198,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1604839666781" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1604938655191">
+    <state width="500" height="445" key="SwitcherDM" timestamp="1605024811577">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1604938655191" />
+    <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1605024811577" />
   </component>
 </project>
