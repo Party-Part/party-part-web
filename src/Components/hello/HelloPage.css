@@ -1,19 +1,19 @@
-.Hello-screen {
+.Hello-page {
   text-align: center;
 }
 
-.Hello-screen-logo {
+.Hello-page-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .Hello-screen-logo {
-    animation: Hello-screen-logo-spin infinite 20s linear;
+  .Hello-page-logo {
+    animation: Hello-page-logo-spin infinite 20s linear;
   }
 }
 
-.Hello-screen-header {
+.Hello-page-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -24,11 +24,11 @@
   color: white;
 }
 
-.Hello-screen-link {
+.Hello-page-link {
   color: #61dafb;
 }
 
-@keyframes Hello-screen-logo-spin {
+@keyframes Hello-page-logo-spin {
   from {
     transform: rotate(0deg);
   }

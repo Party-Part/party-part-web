@@ -1,10 +1,10 @@
 import {render, screen} from '@testing-library/react';
-import HelloScreen from './HelloScreen';
+import HelloPage from './HelloPage';
 import logo from '../../logo.svg';
 import React from 'react';
 
-test('renders hello screen', () => {
-    render(<HelloScreen logo={logo}/>);
+test('renders hello page', () => {
+    render(<HelloPage logo={logo}/>);
 
     expect(screen.getByText(/PartyPart. Split your duties./i))
         .toBeInTheDocument();
@@ -13,8 +13,8 @@ test('renders hello screen', () => {
         .toBeInTheDocument();
 
     expect(screen.getByText(/Как это работает?/i))
-      .toBeInTheDocument();
+        .toBeInTheDocument();
 
-  expect(screen.getByText(/Зачем мне это?/i))
-      .toBeInTheDocument();
+    expect(screen.getByText(/Зачем мне это?/i))
+        .toBeInTheDocument();
 });

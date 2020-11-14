@@ -1,15 +1,15 @@
 import React from 'react';
-import './HelloScreen.css';
+import './HelloPage.css';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { Button } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 
-function HelloScreen(props) {
+function HelloPage(props) {
     return (
-        <Container className="Hello-screen">
+        <Container className="Hello-page">
             <div>
-                <img src={props.logo} className="Hello-screen-logo" alt="logo" />
+                <img src={props.logo} className="Hello-page-logo" alt="logo" />
                 <Typography variant="h2" component="h1" gutterBottom>
                     PartyPart. Split your duties.
                 </Typography>
@@ -34,4 +34,4 @@ function HelloScreen(props) {
         </Container>
     );
 }
-export default HelloScreen;
+export default HelloPage;

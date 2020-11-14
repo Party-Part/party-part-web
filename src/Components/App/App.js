@@ -1,10 +1,10 @@
 import React from 'react';
-import HelloScreen from '../hello/HelloScreen'
+import HelloPage from '../hello/HelloPage'
 import logo from '../../logo.svg';
 
 function App() {
     return (
-        <HelloScreen logo={logo}/>
+        <HelloPage logo={logo}/>
     );
 }
 export default App;
