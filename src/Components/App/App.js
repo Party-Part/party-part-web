@@ -1,10 +1,21 @@
 import React from 'react';
 import HelloPage from '../hello/HelloPage'
-import logo from '../../logo.svg';
+import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
+import CreatePartyPage from "../party/CreatePartyPage";
+// function App() {
+//     return (
+//         <HelloPage logo={logo}/>
+//     );
+// }
 
-function App() {
+const App = () => {
     return (
-        <HelloPage logo={logo}/>
+        <section className="App">
+            <Router>
+                <Route exact path="/" component={HelloPage} />
+                <Route exact path="/party" component={CreatePartyPage} />
+            </Router>
+        </section>
     );
-}
+};
 export default App;
