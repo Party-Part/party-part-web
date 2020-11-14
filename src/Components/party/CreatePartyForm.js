@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,25 +8,11 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import PartyForm from './PartyForm';
 import ParticipantsForm from './ParticipantsForm';
 import Review from './Review';
 import DutiesForm from "./DutiesForm";
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://pakhomovalexander.github.io/ru/">
-                Aleksander Pakhomov
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -76,9 +62,9 @@ function getStepContent(step, info, handlers) {
                 onCurrencyChange={handlers.handleCurrencyChange}
             />;
         case 1:
-            return <ParticipantsForm />;
+            return <ParticipantsForm/>;
         case 2:
-            return <DutiesForm />;
+            return <DutiesForm/>;
         case 3:
             return <Review partyName={info.partyName}/>;
         default:
@@ -116,7 +102,7 @@ export default function CreatePartyForm() {
 
     return (
         <React.Fragment>
-            <CssBaseline />
+            <CssBaseline/>
             <AppBar position="absolute" color="primary" className={classes.appBar}>
                 <Toolbar>
                     <Typography variant="h6" color="inherit" noWrap>
@@ -165,7 +151,6 @@ export default function CreatePartyForm() {
                         )}
                     </React.Fragment>
                 </Paper>
-                <Copyright />
             </main>
         </React.Fragment>
     );
