@@ -117,7 +117,7 @@ export default function CreatePartyForm() {
     return (
         <React.Fragment>
             <CssBaseline />
-            <AppBar position="absolute" color="secondary" className={classes.appBar}>
+            <AppBar position="absolute" color="primary" className={classes.appBar}>
                 <Toolbar>
                     <Typography variant="h6" color="inherit" noWrap>
                         Party Part
