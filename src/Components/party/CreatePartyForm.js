@@ -58,6 +58,7 @@ function getStepContent(step, info, handlers) {
         case 0:
             return <PartyForm
                 partyName={info.partyName}
+                currency={info.currency}
                 onPartyNameChange={handlers.handlePartyNameChange}
                 onCurrencyChange={handlers.handleCurrencyChange}
             />;
@@ -90,7 +91,7 @@ export default function CreatePartyForm() {
     }
 
     const handlers = {handlePartyNameChange, handleCurrencyChange}
-    const info = {partyName}
+    const info = {partyName, currency}
 
     const handleNext = () => {
         setActiveStep(activeStep + 1);
