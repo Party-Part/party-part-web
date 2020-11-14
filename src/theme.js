@@ -18,7 +18,7 @@ const theme = createMuiTheme({
             main: red.A400,
         },
         background: {
-            default: '#282c34',
+            default: '#0e0e0e',
         },
     },
     overrides: {
@@ -34,6 +34,11 @@ const theme = createMuiTheme({
                 margin: '5px',
             },
         },
+        MuiTypography: {
+            root: {
+                color: '#b5ecfb'
+            }
+        }
     },
 });
 export default theme;
