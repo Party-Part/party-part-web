@@ -1,10 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Grid from '@material-ui/core/Grid';
 
 const participants = [
     { name: 'Саша', spent: '100' },
@@ -15,7 +14,7 @@ const participants = [
 
 const useStyles = makeStyles((theme) => ({
     listItem: {
-        padding: theme.spacing(1, 0),
+        padding: theme.spacing(0, 0),
     },
     total: {
         fontWeight: 700,

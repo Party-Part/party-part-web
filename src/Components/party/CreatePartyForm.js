@@ -58,13 +58,19 @@ function getStepContent(step, info, handlers) {
         case 0:
             return <PartyForm
                 partyName={info.partyName}
+                currency={info.currency}
                 onPartyNameChange={handlers.handlePartyNameChange}
                 onCurrencyChange={handlers.handleCurrencyChange}
             />;
         case 1:
             return <ParticipantsForm/>;
         case 2:
-            return <DutiesForm/>;
+            return <DutiesForm
+                splitMethod={info.splitMethod}
+                selectedDate={info.selectedDate}
+                onSplitMethodChange={handlers.handleSplitMethodChange}
+                onDateChange={handlers.handleDateChange}
+            />;
         case 3:
             return <Review partyName={info.partyName}/>;
         default:
@@ -78,19 +84,31 @@ export default function CreatePartyForm() {
 
     const [partyName, setPartyName] = React.useState("");
     const [currency, setCurrency] = React.useState("");
+    const [splitMethod, setSplitMethod] = React.useState("")
+    const [selectedDate, setSelectedDate] = React.useState(new Date());
 
     const handlePartyNameChange = (e: React.FormEvent) => {
         e.preventDefault();
         setPartyName(e.target.value)
     }
 
+
     const handleCurrencyChange = (e: React.FormEvent) => {
         e.preventDefault();
         setCurrency(e.target.value)
     }
 
-    const handlers = {handlePartyNameChange, handleCurrencyChange}
-    const info = {partyName}
+    const handleSplitMethodChange = (e: React.FormEvent) => {
+        e.preventDefault();
+        setSplitMethod(e.target.value)
+    }
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
+
+    const handlers = {handlePartyNameChange, handleCurrencyChange, handleSplitMethodChange, handleDateChange}
+    const info = {partyName, currency, splitMethod, selectedDate}
 
     const handleNext = () => {
         setActiveStep(activeStep + 1);

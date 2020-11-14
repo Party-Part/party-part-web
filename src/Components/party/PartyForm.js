@@ -2,8 +2,10 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 export default function PartyForm(props) {
     return (
@@ -15,7 +17,7 @@ export default function PartyForm(props) {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
-                        id="partyName"
+                        id="partyNameId"
                         name="partyName"
                         label="Название пати"
                         fullWidth
@@ -25,15 +27,18 @@ export default function PartyForm(props) {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="currencyName"
-                        name="currencyName"
-                        label="Валюта"
-                        fullWidth
-                        onChange={props.onCurrencyChange}
-                        // autoComplete="family-name"
-                    />
+                    <FormControl fullWidth>
+                        <InputLabel id="currencyId">Валюта</InputLabel>
+                        <Select
+                            labelId="currencySelectLabel"
+                            id="currencySelect"
+                            onChange={props.onCurrencyChange}
+                            value={props.currency}>
+                            <MenuItem value={1}>Рубли</MenuItem>
+                            <MenuItem value={2}>Евро</MenuItem>
+                            <MenuItem value={3}>Доллары</MenuItem>
+                        </Select>
+                    </FormControl>
                 </Grid>
             </Grid>
         </React.Fragment>
