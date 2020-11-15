@@ -66,6 +66,7 @@ function getStepContent(step, info, handlers) {
             return <DutiesForm
                 splitMethod={info.splitMethod}
                 selectedDate={info.selectedDate}
+                participants={info.participants}
                 onSplitMethodChange={handlers.handleSplitMethodChange}
                 onDateChange={handlers.handleDateChange}
             />;
