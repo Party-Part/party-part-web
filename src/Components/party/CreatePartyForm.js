@@ -1,8 +1,5 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -15,9 +12,6 @@ import Review from './Review';
 import DutiesForm from "./DutiesForm";
 
 const useStyles = makeStyles((theme) => ({
-    appBar: {
-        position: 'relative',
-    },
     layout: {
         width: 'auto',
         marginLeft: theme.spacing(2),
@@ -63,11 +57,16 @@ function getStepContent(step, info, handlers) {
                 onCurrencyChange={handlers.handleCurrencyChange}
             />;
         case 1:
-            return <ParticipantsForm/>;
+            return <ParticipantsForm
+                participants={info.participants}
+                onAddParticipant={handlers.handleAddParticipant}
+                onDeleteParticipant={handlers.handleDeleteParticipant}
+            />;
         case 2:
             return <DutiesForm
                 splitMethod={info.splitMethod}
                 selectedDate={info.selectedDate}
+                participants={info.participants}
                 onSplitMethodChange={handlers.handleSplitMethodChange}
                 onDateChange={handlers.handleDateChange}
             />;
@@ -86,12 +85,12 @@ export default function CreatePartyForm() {
     const [currency, setCurrency] = React.useState("");
     const [splitMethod, setSplitMethod] = React.useState("")
     const [selectedDate, setSelectedDate] = React.useState(new Date());
+    const [participants, setParticipants] = React.useState([]);
 
     const handlePartyNameChange = (e: React.FormEvent) => {
         e.preventDefault();
         setPartyName(e.target.value)
     }
-
 
     const handleCurrencyChange = (e: React.FormEvent) => {
         e.preventDefault();
@@ -107,8 +106,20 @@ export default function CreatePartyForm() {
         setSelectedDate(date);
     };
 
-    const handlers = {handlePartyNameChange, handleCurrencyChange, handleSplitMethodChange, handleDateChange}
-    const info = {partyName, currency, splitMethod, selectedDate}
+    const handleAddParticipant = (participant) => {
+        setParticipants((prevState => [...prevState, participant]));
+    }
+    const handleDeleteParticipant = (index) => {
+        setParticipants((prevState) => [...prevState.filter((p, i) => i !== index)]);
+    };
+
+
+    const handlers = {
+        handlePartyNameChange, handleCurrencyChange, handleSplitMethodChange,
+        handleDateChange, handleDeleteParticipant, handleAddParticipant
+    }
+
+    const info = {partyName, currency, splitMethod, selectedDate, participants}
 
     const handleNext = () => {
         setActiveStep(activeStep + 1);
@@ -120,14 +131,6 @@ export default function CreatePartyForm() {
 
     return (
         <React.Fragment>
-            <CssBaseline/>
-            <AppBar position="absolute" color="primary" className={classes.appBar}>
-                <Toolbar>
-                    <Typography variant="h6" color="inherit" noWrap>
-                        Party Part
-                    </Typography>
-                </Toolbar>
-            </AppBar>
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
                     <Typography component="h1" variant="h4" align="center">

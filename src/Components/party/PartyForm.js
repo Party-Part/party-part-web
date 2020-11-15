@@ -6,14 +6,22 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+    menuItem: {
+        textAlign: 'left'
+    }
+}));
 
 export default function PartyForm(props) {
+    const classes = useStyles();
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
                 Пати
             </Typography>
-            <Grid container spacing={3}>
+            <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
@@ -30,8 +38,10 @@ export default function PartyForm(props) {
                     <FormControl fullWidth>
                         <InputLabel id="currencyId">Валюта</InputLabel>
                         <Select
+                            required
                             labelId="currencySelectLabel"
                             id="currencySelect"
+                            className={classes.menuItem}
                             onChange={props.onCurrencyChange}
                             value={props.currency}>
                             <MenuItem value={1}>Рубли</MenuItem>
