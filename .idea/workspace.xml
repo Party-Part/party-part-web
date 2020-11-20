@@ -10,20 +10,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="217b336d-e72c-4ee1-8315-c684a45df6bd" name="Default Changelist" comment="Rename HelloScreen to HelloPage">
-      <change afterPath="$PROJECT_DIR$/src/Components/party/CreatePartyForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/party/CreatePartyPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/party/DutiesForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/party/ParticipantsForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/party/PartyForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/party/Review.js" afterDir="false" />
+    <list default="true" id="217b336d-e72c-4ee1-8315-c684a45df6bd" name="Default Changelist" comment="Add participants info to Duties form&#10;&#10;Aling Select items to left">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/App/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/hello/HelloPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/hello/HelloPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/party/CreatePartyForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/party/CreatePartyForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/party/DutiesForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/party/DutiesForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/mvp" />
+        <entry key="$PROJECT_DIR$" value="feature/hello-screen" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -155,7 +145,8 @@
       <workItem from="1604937999053" duration="84000" />
       <workItem from="1604938084850" duration="887000" />
       <workItem from="1605013506643" duration="3677000" />
-      <workItem from="1605355034004" duration="7469000" />
+      <workItem from="1605355034004" duration="22300000" />
+      <workItem from="1605886194375" duration="2923000" />
     </task>
     <task id="LOCAL-00001" summary="Set primary button in HelloScreen">
       <created>1604938825044</created>
@@ -178,7 +169,77 @@
       <option name="project" value="LOCAL" />
       <updated>1605355941645</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add create party static form and change color scheme">
+      <created>1605370398593</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605370398593</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Change App bar color">
+      <created>1605370545924</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605370545924</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Optimize imports">
+      <created>1605370617728</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605370617728</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Mova copyright to separate component">
+      <created>1605371102647</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605371102647</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add currency selector">
+      <created>1605373368497</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605373368497</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Change duty form field types">
+      <created>1605375953443</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605375953443</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Move app bar to App.js">
+      <created>1605428957352</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605428957352</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Change spacing in forms">
+      <created>1605429134704</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605429134704</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add participants add/delete abilities">
+      <created>1605439818129</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1605439818129</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add participants info to Duties form&#10;&#10;Aling Select items to left">
+      <created>1605443491553</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1605443491553</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,7 +261,20 @@
     <MESSAGE value="Set primary button in HelloScreen" />
     <MESSAGE value="Move HelloScreen from App to separate component and add more info to it" />
     <MESSAGE value="Rename HelloScreen to HelloPage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rename HelloScreen to HelloPage" />
+    <MESSAGE value="Add create party static form and change color scheme" />
+    <MESSAGE value="Change App bar color" />
+    <MESSAGE value="Optimize imports" />
+    <MESSAGE value="Mova copyright to separate component" />
+    <MESSAGE value="Add currency selector" />
+    <MESSAGE value="Change duty form field types" />
+    <MESSAGE value="Move app bar to App.js" />
+    <MESSAGE value="Change spacing in forms" />
+    <MESSAGE value="Add participants add/delete abilities" />
+    <MESSAGE value="Add participants info to Duties form&#10;&#10;Aling Select items to left" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add participants info to Duties form&#10;&#10;Aling Select items to left" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="430" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605020973618">
@@ -211,26 +285,26 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1605370242354" />
-    <state width="1419" height="276" key="GridCell.Tab.0.bottom" timestamp="1605363023636">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1419" height="276" key="GridCell.Tab.0.bottom" timestamp="1605611952949">
+      <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state width="1419" height="276" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1605363023636" />
-    <state width="1419" height="276" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1605186851153" />
-    <state width="1419" height="276" key="GridCell.Tab.0.center" timestamp="1605363023635">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1419" height="276" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1605611952949" />
+    <state width="1419" height="276" key="GridCell.Tab.0.center" timestamp="1605611952947">
+      <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state width="1419" height="276" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1605363023635" />
-    <state width="1419" height="276" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1605186851153" />
-    <state width="1419" height="276" key="GridCell.Tab.0.left" timestamp="1605363023634">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1419" height="276" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1605611952947" />
+    <state width="1419" height="276" key="GridCell.Tab.0.left" timestamp="1605611952947">
+      <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state width="1419" height="276" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1605363023634" />
-    <state width="1419" height="276" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1605186851153" />
-    <state width="1419" height="276" key="GridCell.Tab.0.right" timestamp="1605363023635">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1419" height="276" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1605611952947" />
+    <state width="1419" height="276" key="GridCell.Tab.0.right" timestamp="1605611952948">
+      <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state width="1419" height="276" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1605363023635" />
-    <state width="1419" height="276" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1605186851153" />
+    <state width="1419" height="276" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1605611952948" />
     <state x="358" y="218" key="MultipleFileMergeDialog" timestamp="1604843772895">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -239,13 +313,17 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1604839666781" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1605369158503">
+    <state width="500" height="445" key="SwitcherDM" timestamp="1605889827256">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1605369158503" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1605355958219">
+    <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1605889827256" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1605443495902">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1605355958219" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1605443495902" />
+    <state x="339" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605442917906">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="339" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1605442917906" />
   </component>
 </project>

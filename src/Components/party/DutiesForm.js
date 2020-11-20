@@ -11,6 +11,9 @@ import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import {KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
 import {makeStyles} from "@material-ui/core/styles";
+import ListItem from "@material-ui/core/ListItem";
+import List from "@material-ui/core/List";
+import ListItemText from "@material-ui/core/ListItemText";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -38,12 +41,35 @@ export default function DutiesForm(props) {
         setPaymentAmount(e.target.value)
     }
 
+    const onAddDuty = (e: React.FormEvent) => {
+        props.onAddDuty(currentPayer, paymentSubject, paymentAmount)
+        setPaymentSubject("");
+        setPaymentAmount(0);
+    }
+
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
                 Расходы
             </Typography>
             <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    <List>
+                        {
+                            props.duties.map((duty, index) =>
+                                <ListItem key={index}>
+                                    <ListItemText
+                                        primary={
+                                            props.participants[duty.currentPayer] + ' заплатил(а) за ' +
+                                            duty.paymentSubject + ' ' +
+                                            duty.paymentAmount + ' рублей'
+                                        }
+                                    />
+                                </ListItem>
+                            )
+                        }
+                    </List>
+                </Grid>
                 <Grid item xs={12}>
                     <FormControl fullWidth>
                         <InputLabel id="currencyId">Кто платил</InputLabel>
@@ -111,7 +137,7 @@ export default function DutiesForm(props) {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <Button variant="contained" color="secondary">
+                    <Button variant="contained" color="secondary" onClick={onAddDuty}>
                         Добавить расход
                     </Button>
                 </Grid>
