@@ -67,8 +67,10 @@ function getStepContent(step, info, handlers) {
                 splitMethod={info.splitMethod}
                 selectedDate={info.selectedDate}
                 participants={info.participants}
+                duties={info.duties}
                 onSplitMethodChange={handlers.handleSplitMethodChange}
                 onDateChange={handlers.handleDateChange}
+                onAddDuty={handlers.handleAddDuty}
             />;
         case 3:
             return <Review partyName={info.partyName}/>;
@@ -86,6 +88,7 @@ export default function CreatePartyForm() {
     const [splitMethod, setSplitMethod] = React.useState("")
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [participants, setParticipants] = React.useState([]);
+    const [duties, setDuties] = React.useState([])
 
     const handlePartyNameChange = (e: React.FormEvent) => {
         e.preventDefault();
@@ -104,22 +107,28 @@ export default function CreatePartyForm() {
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
-    };
+    }
 
     const handleAddParticipant = (participant) => {
         setParticipants((prevState => [...prevState, participant]));
     }
+
     const handleDeleteParticipant = (index) => {
         setParticipants((prevState) => [...prevState.filter((p, i) => i !== index)]);
-    };
+    }
 
+    const handleAddDuty = (currentPayer, paymentSubject, paymentAmount) => {
+        setDuties(prevState => {
+            return [...prevState, {currentPayer, paymentSubject, paymentAmount}]
+        });
+    }
 
     const handlers = {
         handlePartyNameChange, handleCurrencyChange, handleSplitMethodChange,
-        handleDateChange, handleDeleteParticipant, handleAddParticipant
+        handleDateChange, handleDeleteParticipant, handleAddParticipant, handleAddDuty
     }
 
-    const info = {partyName, currency, splitMethod, selectedDate, participants}
+    const info = {partyName, currency, splitMethod, selectedDate, participants, duties}
 
     const handleNext = () => {
         setActiveStep(activeStep + 1);
