@@ -1,11 +1,11 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import CreatePartyForm from "./CreatePartyForm";
+import CreatePartyParentForm from "./CreatePartyParentForm";
 
 function CreatePartyPage(props) {
     return (
         <Container className="Hello-page">
-            <CreatePartyForm/>
+            <CreatePartyParentForm/>
         </Container>
     );
 }
