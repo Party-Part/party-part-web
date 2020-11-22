@@ -160,7 +160,7 @@ export default function CreatePartyForm() {
                         {activeStep === steps.length ? (
                             <React.Fragment>
                                 <Typography variant="h5" gutterBottom>
-                                    Пати созданно!
+                                    Готово!
                                 </Typography>
                             </React.Fragment>
                         ) : (

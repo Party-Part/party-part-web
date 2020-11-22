@@ -1,7 +1,7 @@
 import React from 'react';
 import HelloPage from '../hello/HelloPage'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import CreatePartyPage from "../party/CreatePartyPage";
+import CreatePartyPage from "../party/create/CreatePartyPage";
 import Copyright from "./Copyright";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
