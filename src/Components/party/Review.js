@@ -2,15 +2,8 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-
-const participants = [
-    { name: 'Саша', spent: '100' },
-    { name: 'Дима', spent: '99'},
-    { name: 'Вова', spent: '87' },
-    { name: 'Люся', spent: '0' },
-];
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 
 const useStyles = makeStyles((theme) => ({
     listItem: {
@@ -24,6 +17,21 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const aggregate = (duties) => {
+    const aggregated = new Map();
+    duties.forEach(duty => {
+        if (aggregated.has(duty.payerName)) {
+            let prevAmount = parseFloat(aggregated.get(duty.payerName));
+            let newAmount = prevAmount + parseFloat(duty.paymentAmount);
+            aggregated.set(duty.payerName, newAmount);
+        } else {
+            aggregated.set(duty.payerName, duty.paymentAmount);
+        }
+    });
+
+    return Array.from(aggregated, ([name, amount]) => ({name, amount}));
+};
+
 export default function Review(props) {
     const classes = useStyles();
 
@@ -33,16 +41,16 @@ export default function Review(props) {
                 {props.partyName}
             </Typography>
             <List disablePadding>
-                {participants.map((participant) => (
-                    <ListItem className={classes.listItem} key={participant.name}>
-                        <ListItemText primary={participant.name} />
-                        <Typography variant="body1">Потратил(а) {participant.spent}</Typography>
+                {aggregate(props.duties).map((info, i) => {
+                    return <ListItem className={classes.listItem}>
+                        <ListItemText primary={props.participants[info.name]}/>
+                        <Typography variant="body1">потратил(а) {info.amount}</Typography>
                     </ListItem>
-                ))}
+                })}
                 <ListItem className={classes.listItem}>
-                    <ListItemText primary="Всего" />
+                    <ListItemText primary="Всего"/>
                     <Typography variant="subtitle1" className={classes.total}>
-                        500
+                        {props.duties.map((duty) => parseFloat(duty.paymentAmount)).reduce((a, b) => a + b)}
                     </Typography>
                 </ListItem>
             </List>
