@@ -83,7 +83,7 @@ function getStepContent(step, info, handlers) {
     }
 }
 
-export default function CreatePartyForm() {
+export default function CreatePartyParentForm() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
 
