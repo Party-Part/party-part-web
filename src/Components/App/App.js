@@ -8,6 +8,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
+import PartyDetailPage from "../party/detail/PartyDetailPage";
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -31,6 +32,7 @@ const App = () => {
                 <Router>
                     <Route exact path="/" component={HelloPage}/>
                     <Route exact path="/party" component={CreatePartyPage}/>
+                    <Route exact path="/party/:id" render={renderPartyDetailPage}/>
                 </Router>
             </section>
             <Copyright/>
@@ -38,3 +40,7 @@ const App = () => {
     );
 };
 export default App;
+
+const renderPartyDetailPage = (props) => {
+    return <PartyDetailPage partyId={props.match.params.id}/>
+}

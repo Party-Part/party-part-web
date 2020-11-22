@@ -10,6 +10,7 @@ import PartyForm from './PartyForm';
 import ParticipantsForm from './ParticipantsForm';
 import Review from './Review';
 import DutiesForm from "./DutiesForm";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -162,6 +163,15 @@ export default function CreatePartyParentForm() {
                                 <Typography variant="h5" gutterBottom>
                                     Готово!
                                 </Typography>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    component={Link}
+                                    to="/party/11" //todo: fetch from backend
+                                    className={classes.button}
+                                >
+                                    Расчитать долги
+                                </Button>
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
