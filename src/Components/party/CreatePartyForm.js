@@ -73,7 +73,11 @@ function getStepContent(step, info, handlers) {
                 onAddDuty={handlers.handleAddDuty}
             />;
         case 3:
-            return <Review partyName={info.partyName}/>;
+            return <Review
+                partyName={info.partyName}
+                duties={info.duties}
+                participants={info.participants}
+            />;
         default:
             throw new Error('Unknown step');
     }
@@ -117,9 +121,9 @@ export default function CreatePartyForm() {
         setParticipants((prevState) => [...prevState.filter((p, i) => i !== index)]);
     }
 
-    const handleAddDuty = (currentPayer, paymentSubject, paymentAmount) => {
+    const handleAddDuty = (payerName, paymentSubject, paymentAmount) => {
         setDuties(prevState => {
-            return [...prevState, {currentPayer, paymentSubject, paymentAmount}]
+            return [...prevState, {payerName, paymentSubject, paymentAmount}]
         });
     }
 

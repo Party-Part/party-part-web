@@ -60,7 +60,7 @@ export default function DutiesForm(props) {
                                 <ListItem key={index}>
                                     <ListItemText
                                         primary={
-                                            props.participants[duty.currentPayer] + ' заплатил(а) за ' +
+                                            props.participants[duty.payerName] + ' заплатил(а) за ' +
                                             duty.paymentSubject + ' ' +
                                             duty.paymentAmount + ' рублей'
                                         }
