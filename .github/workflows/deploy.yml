@@ -28,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: cr.yandex/${{secrets.DOCKER_REPO}}/sample:prod2
+          tags: cr.yandex/${{secrets.DOCKER_REPO}}/party-party-web-app
           file: Dockerfile.prod
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
