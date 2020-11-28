@@ -32,3 +32,11 @@ jobs:
           file: Dockerfile.prod
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.HOST_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            sudo docker run -it --rm -p 80:80 -d cr.yandex/${{secrets.DOCKER_REPO}}/party-party-web-app:latest
