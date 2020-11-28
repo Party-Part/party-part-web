@@ -38,6 +38,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.HOST_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          port: 22
           script: |
+            docker stop $(docker ps -a -q)
+            docker rm $(docker ps -a -q)
             sudo docker run -it --rm -p 80:80 -d cr.yandex/${{secrets.DOCKER_REPO}}/party-party-web-app:latest
