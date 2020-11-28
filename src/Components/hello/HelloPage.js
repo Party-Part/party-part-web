@@ -16,7 +16,7 @@ function HelloPage(props) {
                     PartyPart. Split your duties.
                 </Typography>
                 <Button component={Link} to="/party" variant="contained" color="primary">
-                    Разделить расходы
+                    Разделить расходы11
                 </Button>
                 <Divider variant="middle"/>
                 <Typography variant="h3">
