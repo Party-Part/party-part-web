@@ -20,7 +20,7 @@ function HelloPage(props) {
                 </Button>
                 <Divider variant="middle"/>
                 <Typography variant="h3">
-                    Как это работает???
+                    Как это работает?
                 </Typography>
                 <Typography variant="body1">
                     Тут текст про то как это все работает.
