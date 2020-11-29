@@ -41,4 +41,5 @@ jobs:
           script: |
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker rm $(sudo docker ps -a -q)
+            sudo docker pull cr.yandex/${{secrets.DOCKER_REPO}}/party-party-web-app:latest
             sudo docker run -it --rm -p 80:80 -d cr.yandex/${{secrets.DOCKER_REPO}}/party-party-web-app:latest
