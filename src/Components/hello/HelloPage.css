@@ -1,38 +1,38 @@
-.Hello-page {
-  text-align: center;
-}
+/*.Hello-page {*/
+/*  text-align: center;*/
+/*}*/
 
-.Hello-page-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/*.Hello-page-logo {*/
+/*  height: 40vmin;*/
+/*  pointer-events: none;*/
+/*}*/
 
-@media (prefers-reduced-motion: no-preference) {
-  .Hello-page-logo {
-    animation: Hello-page-logo-spin infinite 20s linear;
-  }
-}
+/*@media (prefers-reduced-motion: no-preference) {*/
+/*  .Hello-page-logo {*/
+/*    animation: Hello-page-logo-spin infinite 20s linear;*/
+/*  }*/
+/*}*/
 
-.Hello-page-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/*.Hello-page-header {*/
+/*  background-color: #282c34;*/
+/*  min-height: 100vh;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  font-size: calc(10px + 2vmin);*/
+/*  color: white;*/
+/*}*/
 
-.Hello-page-link {
-  color: #61dafb;
-}
+/*.Hello-page-link {*/
+/*  color: #61dafb;*/
+/*}*/
 
-@keyframes Hello-page-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/*@keyframes Hello-page-logo-spin {*/
+/*  from {*/
+/*    transform: rotate(0deg);*/
+/*  }*/
+/*  to {*/
+/*    transform: rotate(360deg);*/
+/*  }*/
+/*}*/
