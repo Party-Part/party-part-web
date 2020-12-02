@@ -1,5 +1,4 @@
 import React from 'react';
-import './HelloPage.css';
 import Hero from "../modules/views/Hero";
 import Values from "../modules/views/Values";
 import Categories from "../modules/views/Categories";

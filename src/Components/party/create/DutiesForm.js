@@ -19,6 +19,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 const useStyles = makeStyles((theme) => ({
     menuItem: {
         textAlign: 'left'
+    },
+    button: {
+        align: 'center'
     }
 }));
 
@@ -49,8 +52,8 @@ export default function DutiesForm(props) {
 
     return (
         <React.Fragment>
-            <Typography variant="h6" gutterBottom>
-                Расходы
+            <Typography variant="h5" gutterBottom>
+                Добавьте расходы
             </Typography>
             <Grid container spacing={2}>
                 <Grid item xs={12}>
@@ -136,7 +139,7 @@ export default function DutiesForm(props) {
                     </FormControl>
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid container justify="center">
                     <Button variant="contained" color="secondary" onClick={onAddDuty}>
                         Добавить расход
                     </Button>

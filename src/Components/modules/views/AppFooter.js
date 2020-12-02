@@ -42,10 +42,10 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: theme.palette.warning.main,
+        backgroundColor: theme.palette.secondary.main,
         marginRight: theme.spacing(1),
         '&:hover': {
-            backgroundColor: theme.palette.warning.dark,
+            backgroundColor: theme.palette.secondary.dark,
         },
     },
     list: {

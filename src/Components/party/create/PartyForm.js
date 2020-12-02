@@ -18,8 +18,8 @@ export default function PartyForm(props) {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <Typography variant="h6" gutterBottom>
-                Пати
+            <Typography variant="h5" gutterBottom>
+                Создайте вечеринку
             </Typography>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
@@ -27,7 +27,7 @@ export default function PartyForm(props) {
                         required
                         id="partyNameId"
                         name="partyName"
-                        label="Название пати"
+                        label="Название"
                         fullWidth
                         onChange={props.onPartyNameChange}
                         value={props.partyName}
