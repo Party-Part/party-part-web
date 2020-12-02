@@ -10,83 +10,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="217b336d-e72c-4ee1-8315-c684a45df6bd" name="Default Changelist" comment="Change theme and add home page with content">
+    <list default="true" id="217b336d-e72c-4ee1-8315-c684a45df6bd" name="Default Changelist" comment="Fix party creation form bug that appeared after new theme was applied">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/hello/HelloPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/hello/HelloPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/hello/HelloPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/hello/HelloPage.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/modules/views/HowItWorks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modules/views/HowItWorks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/party/create/CreatePartyParentForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/party/create/CreatePartyParentForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/party/create/DutiesForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/party/create/DutiesForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/party/create/ParticipantsForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/party/create/ParticipantsForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/party/create/PartyForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/party/create/PartyForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/ForgotPassword.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/ForgotPassword.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/Home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/Home.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/Privacy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/Privacy.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/SignIn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/SignIn.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/SignUp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/SignUp.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/Terms.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/Terms.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/AppBar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/AppBar.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/Button.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/Button.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/Markdown.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/Markdown.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/Paper.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/Paper.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/Snackbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/Snackbar.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/TextField.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/TextField.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/Toolbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/Toolbar.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/Typography.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/components/Typography.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/form/FormButton.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/form/FormButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/form/FormFeedback.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/form/FormFeedback.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/form/RFTextField.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/form/RFTextField.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/form/defer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/form/defer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/form/validation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/form/validation.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/theme.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/theme.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/AppAppBar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/AppAppBar.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/AppFooter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/AppFooter.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/AppForm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/AppForm.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductCTA.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductCTA.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductCategories.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductCategories.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductHero.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductHero.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductHeroLayout.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductHeroLayout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductHowItWorks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductHowItWorks.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductSmokingHero.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductSmokingHero.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductValues.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/ProductValues.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/privacy-pt.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/privacy-zh.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/privacy.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/views/terms.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/withRoot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/material-ui/docs/src/pages/premium-themes/onepirate/modules/withRoot.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/modules/views/AppFooter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modules/views/AppFooter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +171,7 @@
       <workItem from="1606481571803" duration="6928000" />
       <workItem from="1606803815280" duration="320000" />
       <workItem from="1606841722466" duration="8265000" />
-      <workItem from="1606927112472" duration="1841000" />
+      <workItem from="1606927112472" duration="2237000" />
     </task>
     <task id="LOCAL-00001" summary="Set primary button in HelloScreen">
       <created>1604938825044</created>
@@ -498,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606851193941</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Fix party creation form bug that appeared after new theme was applied">
+      <created>1606929249824</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1606929249824</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -517,7 +451,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Move app bar to App.js" />
     <MESSAGE value="Change spacing in forms" />
     <MESSAGE value="Add participants add/delete abilities" />
     <MESSAGE value="Add participants info to Duties form&#10;&#10;Aling Select items to left" />
@@ -542,7 +475,8 @@
     <MESSAGE value="Move docker registry to secrets and trigger workflow on push to main" />
     <MESSAGE value="Add deploy action bage" />
     <MESSAGE value="Change theme and add home page with content" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change theme and add home page with content" />
+    <MESSAGE value="Fix party creation form bug that appeared after new theme was applied" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix party creation form bug that appeared after new theme was applied" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -588,10 +522,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1604839666781" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1606929120474">
+    <state width="500" height="445" key="SwitcherDM" timestamp="1606929546269">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1606929120474" />
+    <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1606929546269" />
     <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1606851239135">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
