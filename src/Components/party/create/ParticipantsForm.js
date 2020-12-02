@@ -46,8 +46,8 @@ export default function ParticipantsForm(props) {
 
     return (
         <React.Fragment>
-            <Typography variant="h6" gutterBottom>
-                Участники
+            <Typography variant="h5" gutterBottom>
+                Укажите участников
             </Typography>
             <Grid container spacing={2}>
                 <div className={classes.root}>
@@ -73,7 +73,7 @@ export default function ParticipantsForm(props) {
                                value={currentParticipant}
                     />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid container justify="center">
                     <Button variant="contained" color="secondary" onClick={handleAddParticipant}>
                         Добавить участника
                     </Button>

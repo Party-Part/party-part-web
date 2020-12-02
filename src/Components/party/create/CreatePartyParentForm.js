@@ -11,6 +11,7 @@ import ParticipantsForm from './ParticipantsForm';
 import Review from './Review';
 import DutiesForm from "./DutiesForm";
 import {Link} from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -147,7 +148,7 @@ export default function CreatePartyParentForm() {
         <React.Fragment>
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
-                    <Typography component="h1" variant="h4" align="center">
+                    <Typography variant="h6" align="center">
                         Новое пати
                     </Typography>
                     <Stepper activeStep={activeStep} className={classes.stepper}>
@@ -160,18 +161,24 @@ export default function CreatePartyParentForm() {
                     <React.Fragment>
                         {activeStep === steps.length ? (
                             <React.Fragment>
-                                <Typography variant="h5" gutterBottom>
-                                    Готово!
-                                </Typography>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    component={Link}
-                                    to="/party/11" //todo: fetch from backend
-                                    className={classes.button}
-                                >
-                                    Расчитать долги
-                                </Button>
+                                <Grid container>
+                                    <Grid container justify="center">
+                                        <Typography variant="h5" gutterBottom>
+                                            Готово!
+                                        </Typography>
+                                    </Grid>
+                                    <Grid container justify="center">
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            component={Link}
+                                            to="/party/11" //todo: fetch from backend
+                                            className={classes.button}
+                                        >
+                                            Расчитать долги
+                                        </Button>
+                                    </Grid>
+                                </Grid>
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
