@@ -61,18 +61,12 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(1),
         width: 150,
     },
+    footer: {
+        position: 'fixed',
+        bottom: '0',
+        left: '0'
+    }
 }));
-
-const LANGUAGES = [
-    {
-        code: 'en-US',
-        name: 'English',
-    },
-    {
-        code: 'fr-FR',
-        name: 'Français',
-    },
-];
 
 export default function AppFooter() {
     const classes = useStyles();
@@ -89,7 +83,7 @@ export default function AppFooter() {
                         spacing={2}
                         alignContent="center"
                     >
-                        <Grid item className={classes.icons}>
+                        <Grid container justify="center" xs={4}>
                             <a href="https://telegram.org" className={classes.icon}>
                                 <TelegramIcon alt="Telegram"/>
                             </a>
