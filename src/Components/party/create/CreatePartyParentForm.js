@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: 'auto',
             marginRight: 'auto',
         },
+        marginBottom: '15%'
     },
     paper: {
         marginTop: theme.spacing(3),
