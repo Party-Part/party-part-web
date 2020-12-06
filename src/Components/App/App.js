@@ -7,6 +7,9 @@ import {makeStyles} from "@material-ui/core/styles";
 import PartyDetailPage from "../party/detail/PartyDetailPage";
 import AppAppBar from "../modules/views/AppAppBar";
 import AppFooter from "../modules/views/AppFooter";
+import SignUp from "../modules/views/SignUp";
+import SignIn from "../modules/views/SignIn";
+import ForgotPassword from "../modules/views/ForgotPassword";
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -30,6 +33,9 @@ const App = () => {
             <section className="App">
                 <Router>
                     <Route exact path="/" component={HelloPage}/>
+                    <Route exact path="/sign-up" component={SignUp}/>
+                    <Route exact path="/sign-in" component={SignIn}/>
+                    <Route exact path="/forgot-password" component={ForgotPassword}/>
                     <Route exact path="/party" component={CreatePartyPage}/>
                     <Route exact path="/party/:id" render={renderPartyDetailPage}/>
                 </Router>
