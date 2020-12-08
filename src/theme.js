@@ -135,8 +135,14 @@ const theme = {
             fontSize: 18,
         },
         subtitle1: {
-            ...rawTheme.typography.subtitle1,
-            fontSize: 18,
+            ...rawTheme.typography.h5,
+            fontSize: 20,
+            fontWeight: rawTheme.typography.fontWeightLight,
+        },
+        subtitle2: {
+            ...rawTheme.typography.subtitle2,
+            fontSize: 20,
+            fontWeight: rawTheme.typography.fontWeightLight
         },
         body1: {
             ...rawTheme.typography.body2,
