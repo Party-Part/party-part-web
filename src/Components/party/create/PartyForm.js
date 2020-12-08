@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -18,9 +17,6 @@ export default function PartyForm(props) {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <Typography variant="h5" gutterBottom>
-                Создайте вечеринку
-            </Typography>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                     <TextField

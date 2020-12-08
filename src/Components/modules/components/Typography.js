@@ -5,12 +5,12 @@ import MuiTypography from '@material-ui/core/Typography';
 
 const markSyleMapping = {
   center: {
-    h1: '',
+    h1: 'markedH1Center',
     h2: 'markedH2Center',
     h3: 'markedH3Center',
     h4: 'markedH4Center',
-    h5: '',
-    h6: '',
+    h5: 'markedH5Center',
+    h6: 'markedH6Center',
   },
   left: {
     h1: '',
@@ -47,7 +47,14 @@ const styles = (theme) => ({
   },
   [markSyleMapping['center']['h4']]: {
     height: 4,
-    width: 55,
+    width: 44,
+    display: 'block',
+    margin: `${theme.spacing(1)}px auto 0`,
+    backgroundColor: theme.palette.secondary.main,
+  },
+  [markSyleMapping['center']['h5']]: {
+    height: 4,
+    width: 36,
     display: 'block',
     margin: `${theme.spacing(1)}px auto 0`,
     backgroundColor: theme.palette.secondary.main,
@@ -63,12 +70,12 @@ const styles = (theme) => ({
 
 const variantMapping = {
   h1: 'h1',
-  h2: 'h1',
-  h3: 'h1',
-  h4: 'h1',
-  h5: 'h3',
-  h6: 'h2',
-  subtitle1: 'h3',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+  h5: 'h4',
+  h6: 'h5',
+  subtitle1: 'subtitle1',
 };
 
 function Typography(props) {

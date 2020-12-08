@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import {withStyles} from '@material-ui/core/styles';
-import Paper from '../components/Paper';
+import Paper from "@material-ui/core/Paper";
+// import Paper from '../components/Paper';
 
 const styles = (theme) => ({
   root: {
@@ -11,12 +12,22 @@ const styles = (theme) => ({
     backgroundImage: 'url(/static/onepirate/appCurvyLines.png)',
     backgroundRepeat: 'no-repeat',
   },
+  // paper: {
+  //   padding: theme.spacing(2, 1),
+  //   [theme.breakpoints.up('md')]: {
+  //     padding: theme.spacing(8, 6),
+  //   },
+  // },
   paper: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
     padding: theme.spacing(2, 1),
-    [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(8, 6),
+    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+      marginTop: theme.spacing(6),
+      marginBottom: theme.spacing(6),
+      padding: theme.spacing(3),
     },
-  },
+  }
 });
 
 function AppForm(props) {
@@ -26,7 +37,7 @@ function AppForm(props) {
       <div className={classes.root}>
         <Container maxWidth="sm">
           <Box sx={{mt: 7, mb: 12}}>
-            <Paper className={classes.paper} background="light">
+            <Paper className={classes.paper}>
               {children}
             </Paper>
           </Box>
