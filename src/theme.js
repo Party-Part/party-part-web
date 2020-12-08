@@ -106,7 +106,7 @@ const theme = {
         h1: {
             ...rawTheme.typography.h1,
             ...fontHeader,
-            letterSpacing: 0,
+            // letterSpacing: 0,
             fontSize: 60,
         },
         h2: {
@@ -126,8 +126,8 @@ const theme = {
         },
         h5: {
             ...rawTheme.typography.h5,
-            fontSize: 20,
-            fontWeight: rawTheme.typography.fontWeightLight,
+            ...fontHeader,
+            fontSize: 24,
         },
         h6: {
             ...rawTheme.typography.h6,

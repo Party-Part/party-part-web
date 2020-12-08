@@ -1,5 +1,4 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import {Button} from "@material-ui/core";
@@ -13,9 +12,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         flexWrap: 'wrap',
-        '& > *': {
-            margin: theme.spacing(1),
-        },
+    },
+    button: {
+        marginTop: theme.spacing(2)
     },
     nested: {
         margin: theme.spacing(0.5)
@@ -46,9 +45,6 @@ export default function ParticipantsForm(props) {
 
     return (
         <React.Fragment>
-            <Typography variant="h5" gutterBottom>
-                Укажите участников
-            </Typography>
             <Grid container spacing={2}>
                 <div className={classes.root}>
                     <Grid item xs={12}>
@@ -74,7 +70,8 @@ export default function ParticipantsForm(props) {
                     />
                 </Grid>
                 <Grid container justify="center">
-                    <Button variant="contained" color="secondary" onClick={handleAddParticipant}>
+                    <Button className={classes.button} variant="contained" color="secondary"
+                            onClick={handleAddParticipant}>
                         Добавить участника
                     </Button>
                 </Grid>

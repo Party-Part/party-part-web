@@ -5,13 +5,13 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import PartyForm from './PartyForm';
 import ParticipantsForm from './ParticipantsForm';
 import Review from './Review';
 import DutiesForm from "./DutiesForm";
 import {Link} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
+import Typography from "../../modules/components/Typography";
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -23,12 +23,14 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: 'auto',
             marginRight: 'auto',
         },
-        marginBottom: '15%'
+        marginBottom: '25%'
     },
     paper: {
+        padding: '20px 10px',
+        margin: '10px',
+        backgroundColor: '#ffffff', // 5d737e
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(3),
-        padding: theme.spacing(2),
         [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
             marginTop: theme.spacing(6),
             marginBottom: theme.spacing(6),
@@ -149,7 +151,7 @@ export default function CreatePartyParentForm() {
         <React.Fragment>
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
-                    <Typography variant="h6" align="center">
+                    <Typography variant="h5" align="center" marked="center">
                         Новое пати
                     </Typography>
                     <Stepper activeStep={activeStep} className={classes.stepper}>

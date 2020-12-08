@@ -1,5 +1,4 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import {Button} from "@material-ui/core";
@@ -21,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'left'
     },
     button: {
-        align: 'center'
+        align: 'center',
+        marginTop: theme.spacing(2)
     }
 }));
 
@@ -52,27 +52,27 @@ export default function DutiesForm(props) {
 
     return (
         <React.Fragment>
-            <Typography variant="h5" gutterBottom>
-                Добавьте расходы
-            </Typography>
             <Grid container spacing={2}>
-                <Grid item xs={12}>
-                    <List>
-                        {
-                            props.duties.map((duty, index) =>
-                                <ListItem key={index}>
-                                    <ListItemText
-                                        primary={
-                                            props.participants[duty.payerName] + ' заплатил(а) за ' +
-                                            duty.paymentSubject + ' ' +
-                                            duty.paymentAmount + ' рублей'
-                                        }
-                                    />
-                                </ListItem>
-                            )
-                        }
-                    </List>
-                </Grid>
+                {props.duties.length === 0 ?
+                    <div/> :
+                    <Grid item xs={12}>
+                        <List>
+                            {
+                                props.duties.map((duty, index) =>
+                                    <ListItem key={index}>
+                                        <ListItemText
+                                            primary={
+                                                props.participants[duty.payerName] + ' заплатил(а) за ' +
+                                                duty.paymentSubject + ' ' +
+                                                duty.paymentAmount + ' рублей'
+                                            }
+                                        />
+                                    </ListItem>
+                                )
+                            }
+                        </List>
+                    </Grid>
+                }
                 <Grid item xs={12}>
                     <FormControl fullWidth>
                         <InputLabel id="currencyId">Кто платил</InputLabel>
