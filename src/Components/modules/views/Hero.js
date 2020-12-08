@@ -42,7 +42,7 @@ function Hero(props) {
             <Typography color="inherit" align="center" variant="h2" marked="center">
                 Split your duties
             </Typography>
-            <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
+            <Typography color="inherit" align="center" variant="h6" className={classes.h5}>
                 Раздели расходы между друзьями без лишних переводов
             </Typography>
             <Button

@@ -70,7 +70,7 @@ function HowItWorks(props) {
               <Grid item xs={12} md={4}>
                 <div className={classes.item}>
                   <div className={classes.number}>1.</div>
-                  <Typography variant="h5" align="center">
+                  <Typography variant="subtitle1" align="center">
                     Маша платит за бар, Дима за такси и за ресторан. Петя ни за что не платит.
                   </Typography>
                 </div>
@@ -78,7 +78,7 @@ function HowItWorks(props) {
               <Grid item xs={12} md={4}>
                 <div className={classes.item}>
                   <div className={classes.number}>2.</div>
-                  <Typography variant="h5" align="center">
+                  <Typography variant="subtitle1" align="center">
                     Маша и Дима заносят свои расходы в PartyPart.
                     Указывают способ разделения: бар пополам между Петей и Димой, такси и ресторан поровну между всеми.
                   </Typography>
@@ -87,7 +87,7 @@ function HowItWorks(props) {
               <Grid item xs={12} md={4}>
                 <div className={classes.item}>
                   <div className={classes.number}>3.</div>
-                  <Typography variant="h5" align="center">
+                  <Typography variant="subtitle1" align="center">
                     PartyPart расчитывает остатки между ребятами и показывает кому и сколько нужно перевести денег,
                     что бы не быть друг у друга в долгу.
                   </Typography>

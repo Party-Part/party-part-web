@@ -62,7 +62,7 @@ function Values(props) {
                 <Typography variant="h6" className={classes.title}>
                   Простота
                 </Typography>
-                <Typography variant="h5">
+                <Typography variant="subtitle1" align="center">
                   Делите расходы между друзьями в несколько шагов
                 </Typography>
               </div>
@@ -73,7 +73,7 @@ function Values(props) {
                 <Typography variant="h6" className={classes.title}>
                   Экономия
                 </Typography>
-                <Typography variant="h5">
+                <Typography variant="subtitle1" align="center">
                   Учитывайте только остатки по расходам и не платите коммиссию за переводы
                 </Typography>
               </div>
@@ -84,8 +84,8 @@ function Values(props) {
                 <Typography variant="h6" className={classes.title}>
                   Доступность
                 </Typography>
-                <Typography variant="h5">
-                  Фиксируйте каждую затрату через телеграм бота
+                <Typography variant="subtitle1" align="center">
+                  Фиксируйте каждую трату через телеграм бота
                 </Typography>
               </div>
             </Grid>
