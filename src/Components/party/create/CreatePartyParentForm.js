@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: 'auto',
             marginRight: 'auto',
         },
-        marginBottom: '25%'
+        marginBottom: '5%',
+        minHeight: "70vh"
     },
     paper: {
         padding: '20px 10px',

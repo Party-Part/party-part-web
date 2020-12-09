@@ -23,6 +23,8 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+        flexDirection: 'column',
+        // minHeight: '100vh',
         backgroundColor: theme.palette.secondary.light,
     },
     container: {
@@ -62,9 +64,10 @@ const useStyles = makeStyles((theme) => ({
         width: 150,
     },
     footer: {
-        position: 'fixed',
-        bottom: '0',
-        left: '0'
+        marginTop: 'auto',
+        // position: 'fixed',
+        // bottom: '0',
+        // left: '0'
     }
 }));
 
@@ -73,30 +76,32 @@ export default function AppFooter() {
 
     return (
         <Typography component="footer" className={classes.root}>
-            <Container className={classes.container}>
-                <Grid container spacing={2}>
-                    <Grid
-                        container
-                        direction="column"
-                        justifyContent="flex-end"
-                        className={classes.iconsWrapper}
-                        spacing={2}
-                        alignContent="center"
-                    >
-                        <Grid container justify="center" xs={4}>
-                            <a href="https://telegram.org" className={classes.icon}>
-                                <TelegramIcon alt="Telegram"/>
-                            </a>
-                            <a href="https://twitter.com" className={classes.icon}>
-                                <TwitterIcon alt="Twitter"/>
-                            </a>
-                        </Grid>
-                        <Grid item>
-                            <Copyright/>
+            <footer className={classes.footer}>
+                <Container className={classes.container}>
+                    <Grid container spacing={2}>
+                        <Grid
+                            container
+                            direction="column"
+                            justifyContent="flex-end"
+                            className={classes.iconsWrapper}
+                            spacing={2}
+                            alignContent="center"
+                        >
+                            <Grid container justify="center" xs={4}>
+                                <a href="https://telegram.org" className={classes.icon}>
+                                    <TelegramIcon alt="Telegram"/>
+                                </a>
+                                <a href="https://twitter.com" className={classes.icon}>
+                                    <TwitterIcon alt="Twitter"/>
+                                </a>
+                            </Grid>
+                            <Grid item>
+                                <Copyright/>
+                            </Grid>
                         </Grid>
                     </Grid>
-                </Grid>
-            </Container>
+                </Container>
+            </footer>
         </Typography>
     );
 }
