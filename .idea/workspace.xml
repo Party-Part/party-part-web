@@ -10,9 +10,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="217b336d-e72c-4ee1-8315-c684a45df6bd" name="Default Changelist" comment="Fix party creation form bug that appeared after new theme was applied">
+    <list default="true" id="217b336d-e72c-4ee1-8315-c684a45df6bd" name="Default Changelist" comment="Add details info">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/modules/views/AppAppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modules/views/AppAppBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/modules/views/AppFooter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modules/views/AppFooter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/modules/views/HowItWorks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modules/views/HowItWorks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/modules/views/Values.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modules/views/Values.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,10 +33,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/add-tests" />
+        <entry key="$PROJECT_DIR$" value="feature/add-sticky-footer" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -50,7 +54,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Components/party/create" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Components/modules/views" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -64,19 +68,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/Components/party/create" />
-      <recent name="$PROJECT_DIR$/src/Components/modules/components" />
-      <recent name="$PROJECT_DIR$/src/Components/modules/views" />
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/src/Components/App" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Components/modules/components" />
       <recent name="$PROJECT_DIR$/src/Components/modules" />
       <recent name="$PROJECT_DIR$/src/Components/party/create" />
       <recent name="$PROJECT_DIR$/src/Components/App" />
       <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Components/modules/views" />
+      <recent name="$PROJECT_DIR$/src/Components/modules/components" />
+      <recent name="$PROJECT_DIR$/src/Components/modules/form" />
+      <recent name="$PROJECT_DIR$/src/Components/modules" />
+      <recent name="$PROJECT_DIR$/src/Components/party/create" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.renders with or without a name">
@@ -171,7 +175,13 @@
       <workItem from="1606481571803" duration="6928000" />
       <workItem from="1606803815280" duration="320000" />
       <workItem from="1606841722466" duration="8265000" />
-      <workItem from="1606927112472" duration="2237000" />
+      <workItem from="1606927112472" duration="3225000" />
+      <workItem from="1607016202702" duration="1875000" />
+      <workItem from="1607277588011" duration="3766000" />
+      <workItem from="1607352810864" duration="1029000" />
+      <workItem from="1607446070256" duration="5178000" />
+      <workItem from="1607534194770" duration="2336000" />
+      <workItem from="1607609830492" duration="1097000" />
     </task>
     <task id="LOCAL-00001" summary="Set primary button in HelloScreen">
       <created>1604938825044</created>
@@ -432,7 +442,77 @@
       <option name="project" value="LOCAL" />
       <updated>1606929249824</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Change colors in theme">
+      <created>1606929623659</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1606929623659</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Fix footer in party creation form">
+      <created>1606934802276</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1606934802276</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Centralize marked Typhography">
+      <created>1607017673045</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1607017673045</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Add sign in, sign up and forgot password forms">
+      <created>1607283051599</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1607283051599</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Install final-form dependency">
+      <created>1607354307699</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1607354307699</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Make forms being more similar">
+      <created>1607450037727</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1607450037727</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Fix home page typograhpy">
+      <created>1607451278078</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1607451278078</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Change app title">
+      <created>1607451470655</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1607451470655</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Make footer sticky">
+      <created>1607536072236</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1607536072236</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Add details info">
+      <created>1607538684402</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1607538684402</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,16 +531,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Change spacing in forms" />
-    <MESSAGE value="Add participants add/delete abilities" />
-    <MESSAGE value="Add participants info to Duties form&#10;&#10;Aling Select items to left" />
-    <MESSAGE value="Move duties to CreatePartyForm and display them" />
-    <MESSAGE value="Change Review from using mock data to real one" />
-    <MESSAGE value="Move creation forms to separate package" />
-    <MESSAGE value="Rename parent form" />
-    <MESSAGE value="Add route to PartyDetailPage" />
-    <MESSAGE value="Add Dockerfile for development" />
-    <MESSAGE value="Add nginx to prod docker" />
     <MESSAGE value="Test github acions" />
     <MESSAGE value="Add deploy workflow" />
     <MESSAGE value="Fix docker file ref and tag in deploy.yml" />
@@ -476,7 +546,17 @@
     <MESSAGE value="Add deploy action bage" />
     <MESSAGE value="Change theme and add home page with content" />
     <MESSAGE value="Fix party creation form bug that appeared after new theme was applied" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix party creation form bug that appeared after new theme was applied" />
+    <MESSAGE value="Change colors in theme" />
+    <MESSAGE value="Fix footer in party creation form" />
+    <MESSAGE value="Centralize marked Typhography" />
+    <MESSAGE value="Add sign in, sign up and forgot password forms" />
+    <MESSAGE value="Install final-form dependency" />
+    <MESSAGE value="Make forms being more similar" />
+    <MESSAGE value="Fix home page typograhpy" />
+    <MESSAGE value="Change app title" />
+    <MESSAGE value="Make footer sticky" />
+    <MESSAGE value="Add details info" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add details info" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -494,25 +574,25 @@
       <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.824@0.23.1440.824" timestamp="1606928806187" />
-    <state width="1419" height="276" key="GridCell.Tab.0.bottom" timestamp="1605611952949">
-      <screen x="0" y="23" width="1440" height="824" />
+    <state width="1419" height="192" key="GridCell.Tab.0.bottom" timestamp="1607414148555">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="276" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1605363023636" />
+    <state width="1419" height="192" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1607414148555" />
     <state width="1419" height="276" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1605611952949" />
-    <state width="1419" height="276" key="GridCell.Tab.0.center" timestamp="1605611952947">
-      <screen x="0" y="23" width="1440" height="824" />
+    <state width="1419" height="192" key="GridCell.Tab.0.center" timestamp="1607414148553">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="276" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1605363023635" />
+    <state width="1419" height="192" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1607414148553" />
     <state width="1419" height="276" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1605611952947" />
-    <state width="1419" height="276" key="GridCell.Tab.0.left" timestamp="1605611952947">
-      <screen x="0" y="23" width="1440" height="824" />
+    <state width="1419" height="192" key="GridCell.Tab.0.left" timestamp="1607414148550">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="276" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1605363023634" />
+    <state width="1419" height="192" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1607414148550" />
     <state width="1419" height="276" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1605611952947" />
-    <state width="1419" height="276" key="GridCell.Tab.0.right" timestamp="1605611952948">
-      <screen x="0" y="23" width="1440" height="824" />
+    <state width="1419" height="192" key="GridCell.Tab.0.right" timestamp="1607414148554">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="276" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1605363023635" />
+    <state width="1419" height="192" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1607414148554" />
     <state width="1419" height="276" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1605611952948" />
     <state x="358" y="218" key="MultipleFileMergeDialog" timestamp="1604843772895">
       <screen x="0" y="0" width="1440" height="900" />
@@ -522,25 +602,29 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1604839666781" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1606929546269">
+    <state width="500" height="445" key="SwitcherDM" timestamp="1607612441585">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1606929546269" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1606851239135">
+    <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1607612441585" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1607538690368">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606851239135" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1607538690368" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1606928806188">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.23.1440.824@0.23.1440.824" timestamp="1606928806188" />
-    <state x="339" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606929165340">
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1607450850506">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="339" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1606929165340" />
-    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1606843400644">
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1607450850506" />
+    <state x="339" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1607450905919">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1606843400644" />
+    <state x="339" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1607450905919" />
+    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1607451385317">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1607451385317" />
   </component>
 </project>
