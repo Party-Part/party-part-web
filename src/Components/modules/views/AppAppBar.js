@@ -8,6 +8,9 @@ import AppBar from '../components/AppBar';
 import Toolbar, {styles as toolbarStyles} from '../components/Toolbar';
 
 const styles = (theme) => ({
+  root: {
+    backgroundColor: theme.palette.primary.dark,
+  },
   title: {
     fontSize: 24,
   },
@@ -41,7 +44,7 @@ function AppAppBar(props) {
 
   return (
       <div>
-        <AppBar position="fixed">
+        <AppBar position="fixed" className={classes.root}>
           <Toolbar className={classes.toolbar}>
             <div className={classes.left}/>
             <Link

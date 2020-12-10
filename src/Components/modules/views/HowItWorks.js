@@ -9,7 +9,7 @@ import Typography from '../components/Typography';
 const styles = (theme) => ({
   root: {
     display: 'flex',
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: theme.palette.primary.light,
     overflow: 'hidden',
   },
   container: {
@@ -32,7 +32,7 @@ const styles = (theme) => ({
   number: {
     fontSize: 28,
     fontFamily: theme.typography.fontFamily,
-    color: theme.palette.secondary.main,
+    color: theme.palette.secondary.dard,
     fontWeight: theme.typography.fontWeightMedium,
   },
   icon: {
@@ -60,6 +60,7 @@ function HowItWorks(props) {
           <Typography
               variant="h4"
               marked="center"
+              da
               className={classes.title}
               component="h2"
           >

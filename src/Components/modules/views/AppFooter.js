@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         // minHeight: '100vh',
-        backgroundColor: theme.palette.secondary.light,
+        backgroundColor: theme.palette.primary.main,
     },
     container: {
         marginTop: theme.spacing(4),
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: theme.palette.secondary.dark,
         marginRight: theme.spacing(1),
         '&:hover': {
             backgroundColor: theme.palette.secondary.dark,
