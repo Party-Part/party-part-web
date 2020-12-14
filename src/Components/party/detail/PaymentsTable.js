@@ -10,7 +10,7 @@ const columns = [
     {name: 'amount', header: 'Сколько', defaultFlex: 1, type: 'number'}
 ];
 
-export default function DutiesTable(props) {
+export default function PaymentsTable(props) {
     return (
         <ReactDataGrid
             // idProperty="id"
