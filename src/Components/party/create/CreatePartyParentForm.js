@@ -53,42 +53,6 @@ const useStyles = makeStyles((theme) => ({
 
 const steps = ['Пати', 'Участники', 'Расходы', 'Проверяем'];
 
-function getStepContent(step, info, handlers) {
-    switch (step) {
-        case 0:
-            return <PartyForm
-                partyName={info.partyName}
-                currency={info.currency}
-                onPartyNameChange={handlers.handlePartyNameChange}
-                onCurrencyChange={handlers.handleCurrencyChange}
-            />;
-        case 1:
-            return <ParticipantsForm
-                participants={info.participants}
-                onAddParticipant={handlers.handleAddParticipant}
-                onDeleteParticipant={handlers.handleDeleteParticipant}
-            />;
-        case 2:
-            return <DutiesForm
-                splitMethod={info.splitMethod}
-                selectedDate={info.selectedDate}
-                participants={info.participants}
-                duties={info.duties}
-                onSplitMethodChange={handlers.handleSplitMethodChange}
-                onDateChange={handlers.handleDateChange}
-                onAddDuty={handlers.handleAddDuty}
-            />;
-        case 3:
-            return <Review
-                partyName={info.partyName}
-                duties={info.duties}
-                participants={info.participants}
-            />;
-        default:
-            throw new Error('Unknown step');
-    }
-}
-
 export default function CreatePartyParentForm() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
@@ -98,7 +62,8 @@ export default function CreatePartyParentForm() {
     const [splitMethod, setSplitMethod] = React.useState("")
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [participants, setParticipants] = React.useState([]);
-    const [duties, setDuties] = React.useState([])
+    const [duties, setDuties] = React.useState({})
+    const [nextDutyId, setNextDutyId] = React.useState(0);
 
     const handlePartyNameChange = (e: React.FormEvent) => {
         e.preventDefault();
@@ -127,18 +92,38 @@ export default function CreatePartyParentForm() {
         setParticipants((prevState) => [...prevState.filter((p, i) => i !== index)]);
     }
 
-    const handleAddDuty = (payerName, paymentSubject, paymentAmount) => {
-        setDuties(prevState => {
-            return [...prevState, {payerName, paymentSubject, paymentAmount}]
-        });
+    const handleAddDuty = (id, payerName, paymentSubject, paymentAmount) => {
+        setDuties(prevState => ({
+            ...prevState,
+            [id]: {
+                whoPaid: payerName,
+                forWhat: paymentSubject,
+                amount: paymentAmount,
+                currency: 'рублей'
+            }
+        }))
+        setNextDutyId(nextDutyId + 1)
+    }
+
+    const handleChangeDuty = (id, payerName, paymentSubject, paymentAmount) => {
+        console.log(id)
+        let duty = duties[id];
+        // duty.whoPaid = payerName;
+        duty.forWhat = paymentSubject;
+        duty.amount = paymentAmount;
+        duty.currency = 'рублей';
+        let copied = {...duties};
+        console.log(copied);
+        copied[id] = duty;
+        console.log(duty);
+        console.log(copied)
+        setDuties(copied);
     }
 
     const handlers = {
         handlePartyNameChange, handleCurrencyChange, handleSplitMethodChange,
-        handleDateChange, handleDeleteParticipant, handleAddParticipant, handleAddDuty
+        handleDateChange, handleDeleteParticipant, handleAddParticipant, handleAddDuty, handleChangeDuty
     }
-
-    const info = {partyName, currency, splitMethod, selectedDate, participants, duties}
 
     const handleNext = () => {
         setActiveStep(activeStep + 1);
@@ -147,6 +132,44 @@ export default function CreatePartyParentForm() {
     const handleBack = () => {
         setActiveStep(activeStep - 1);
     };
+
+    const getStepContent = (step) => {
+        switch (step) {
+            case 0:
+                return <PartyForm
+                    partyName={partyName}
+                    currency={currency}
+                    onPartyNameChange={handlers.handlePartyNameChange}
+                    onCurrencyChange={handlers.handleCurrencyChange}
+                />;
+            case 1:
+                return <ParticipantsForm
+                    participants={participants}
+                    onAddParticipant={handlers.handleAddParticipant}
+                    onDeleteParticipant={handlers.handleDeleteParticipant}
+                />;
+            case 2:
+                return <DutiesForm
+                    splitMethod={splitMethod}
+                    selectedDate={selectedDate}
+                    participants={participants}
+                    duties={duties}
+                    nextDutyId={nextDutyId}
+                    onSplitMethodChange={handlers.handleSplitMethodChange}
+                    onDateChange={handlers.handleDateChange}
+                    onAddDuty={handlers.handleAddDuty}
+                    onChangeDuty={handlers.handleChangeDuty}
+                />;
+            case 3:
+                return <Review
+                    partyName={partyName}
+                    duties={duties}
+                    participants={participants}
+                />;
+            default:
+                throw new Error('Unknown step');
+        }
+    }
 
     return (
         <React.Fragment>
@@ -186,7 +209,7 @@ export default function CreatePartyParentForm() {
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
-                                {getStepContent(activeStep, info, handlers)}
+                                {getStepContent(activeStep, handlers)}
                                 <div className={classes.buttons}>
                                     {activeStep !== 0 && (
                                         <Button onClick={handleBack} className={classes.button}>
