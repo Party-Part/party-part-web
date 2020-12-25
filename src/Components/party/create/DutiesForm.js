@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import {Button} from "@material-ui/core";
@@ -10,9 +10,7 @@ import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import {KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
 import {makeStyles} from "@material-ui/core/styles";
-import ListItem from "@material-ui/core/ListItem";
-import List from "@material-ui/core/List";
-import ListItemText from "@material-ui/core/ListItemText";
+import DutiesTable from "./DutiesTable";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +29,7 @@ export default function DutiesForm(props) {
     const [currentPayer, setCurrentPayer] = React.useState(props.participants[0]);
     const [paymentSubject, setPaymentSubject] = React.useState("")
     const [paymentAmount, setPaymentAmount] = React.useState(0);
+    const [dutiesDatasource, setDutiesDatasource] = React.useState([]);
 
     const onPayerChange = (e: React.FormEvent) => {
         setCurrentPayer(e.target.value)
@@ -45,32 +44,40 @@ export default function DutiesForm(props) {
     }
 
     const onAddDuty = (e: React.FormEvent) => {
-        props.onAddDuty(currentPayer, paymentSubject, paymentAmount)
+        props.onAddDuty(props.nextDutyId, currentPayer, paymentSubject, paymentAmount)
+        setDutiesDatasource(prevState => [...prevState, {
+            id: props.nextDutyId,
+            whoPaid: props.participants[currentPayer],
+            forWhat: paymentSubject,
+            amount: paymentAmount,
+            currency: 'рублей'
+        }]);
         setPaymentSubject("");
         setPaymentAmount(0);
     }
 
+    function isEmpty(obj) {
+        for (var key in obj) {
+            if (obj.hasOwnProperty(key))
+                return false;
+        }
+        return true;
+    }
+
+    const onRowChanged = useCallback(({value, columnId, rowIndex}) => {
+        const data = [...dutiesDatasource];
+        data[rowIndex][columnId] = value;
+        setDutiesDatasource(data);
+        props.onChangeDuty(data[rowIndex].id, data[rowIndex].whoPaid, data[rowIndex].forWhat, data[rowIndex].amount)
+    }, [dutiesDatasource])
+
     return (
         <React.Fragment>
             <Grid container spacing={2}>
-                {props.duties.length === 0 ?
+                {isEmpty(props.duties) ?
                     <div/> :
                     <Grid item xs={12}>
-                        <List>
-                            {
-                                props.duties.map((duty, index) =>
-                                    <ListItem key={index}>
-                                        <ListItemText
-                                            primary={
-                                                props.participants[duty.payerName] + ' заплатил(а) за ' +
-                                                duty.paymentSubject + ' ' +
-                                                duty.paymentAmount + ' рублей'
-                                            }
-                                        />
-                                    </ListItem>
-                                )
-                            }
-                        </List>
+                        <DutiesTable source={dutiesDatasource} onEditComplete={onRowChanged}/>
                     </Grid>
                 }
                 <Grid item xs={12}>

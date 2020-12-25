@@ -6,7 +6,7 @@ import Typography from "../../modules/components/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import DutiesTable from "./DutiesTable";
+import PaymentsTable from "./PaymentsTable";
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -156,7 +156,7 @@ function PartyDetailPage(props) {
                               justify="center">
                             <Grid item xs={12}>
                                 <div className={classes.table}>
-                                    <DutiesTable source={source}/>
+                                    <PaymentsTable source={source}/>
                                 </div>
                             </Grid>
                         </Grid>

@@ -17,18 +17,28 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const amounts = (dict) => {
+    console.log(dict);
+    let values = [];
+    for (var key in dict) {
+        values.push(dict[key].amount);
+    }
+    console.log(values)
+    return values;
+}
+
 const aggregate = (duties) => {
     const aggregated = new Map();
-    duties.forEach(duty => {
-        if (aggregated.has(duty.payerName)) {
-            let prevAmount = parseFloat(aggregated.get(duty.payerName));
-            let newAmount = prevAmount + parseFloat(duty.paymentAmount);
-            aggregated.set(duty.payerName, newAmount);
+    for (var key in duties) {
+        const duty = duties[key];
+        if (aggregated.has(duty.whoPaid)) {
+            let prevAmount = parseFloat(aggregated.get(duty.whoPaid));
+            let newAmount = prevAmount + parseFloat(duty.amount);
+            aggregated.set(duty.whoPaid, newAmount);
         } else {
-            aggregated.set(duty.payerName, duty.paymentAmount);
+            aggregated.set(duty.whoPaid, duty.amount);
         }
-    });
-
+    }
     return Array.from(aggregated, ([name, amount]) => ({name, amount}));
 };
 
@@ -42,7 +52,7 @@ export default function Review(props) {
             </Typography>
             <List disablePadding>
                 {aggregate(props.duties).map((info, i) => {
-                    return <ListItem className={classes.listItem}>
+                    return <ListItem key={i} className={classes.listItem}>
                         <ListItemText primary={props.participants[info.name]}/>
                         <Typography variant="body1">потратил(а) {info.amount}</Typography>
                     </ListItem>
@@ -50,7 +60,7 @@ export default function Review(props) {
                 <ListItem className={classes.listItem}>
                     <ListItemText primary="Всего"/>
                     <Typography variant="subtitle1" className={classes.total}>
-                        {props.duties.map((duty) => parseFloat(duty.paymentAmount)).reduce((a, b) => a + b)}
+                        {amounts(props.duties).map((amount) => parseFloat(amount)).reduce((a, b) => a + b)}
                     </Typography>
                 </ListItem>
             </List>
