@@ -23,13 +23,29 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+const initDataSource = (props) => {
+    const result = []
+    for (var key in props.duties) {
+        result.push({
+            id: props.duties[key].id,
+            whoPaid: props.participants[props.duties[key].whoPaid],
+            forWhat: props.duties[key].forWhat,
+            amount: props.duties[key].amount,
+            currency: props.duties[key].currency
+        })
+    }
+
+    return result
+}
+
 export default function DutiesForm(props) {
     const classes = useStyles();
 
     const [currentPayer, setCurrentPayer] = React.useState(props.participants[0]);
     const [paymentSubject, setPaymentSubject] = React.useState("")
     const [paymentAmount, setPaymentAmount] = React.useState(0);
-    const [dutiesDatasource, setDutiesDatasource] = React.useState([]);
+
+    const [dutiesDatasource, setDutiesDatasource] = React.useState(initDataSource(props));
 
     const onPayerChange = (e: React.FormEvent) => {
         setCurrentPayer(e.target.value)
