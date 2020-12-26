@@ -19,25 +19,25 @@ jobs:
       - name: Login to Docker
         uses: docker/login-action@v1
         with:
-          registry: ${{ secrets.DOCKER_REGISTRY }}
+          registry: ${{ secrets.DOCKER_REGISTRY_G }}
           username: oauth
-          password: ${{ secrets.CR_YANDEX_TOKEN }}
+          password: ${{ secrets.CR_YANDEX_TOKEN_G }}
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.DOCKER_REGISTRY }}/${{secrets.DOCKER_REPO}}/party-party-web-app:latest
+          tags: ${{ secrets.DOCKER_REGISTRY_G }}/${{secrets.DOCKER_REPO_G}}/party-party-web-app:latest
           file: Dockerfile.prod
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.HOST_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
+          host: ${{ secrets.HOST_G }}
+          username: ${{ secrets.HOST_USERNAME_G }}
+          key: ${{ secrets.SSH_KEY_G }}
           script: |
             sudo docker stop $(sudo docker ps -a -q)
-            sudo docker pull ${{ secrets.DOCKER_REGISTRY }}/${{secrets.DOCKER_REPO}}/party-party-web-app:latest
-            sudo docker run -it --rm -p 80:80 -d ${{ secrets.DOCKER_REGISTRY }}/${{secrets.DOCKER_REPO}}/party-party-web-app:latest
+            sudo docker pull ${{ secrets.DOCKER_REGISTRY_G }}/${{secrets.DOCKER_REPO_G}}/party-party-web-app:latest
+            sudo docker run -it --rm -p 80:80 -d ${{ secrets.DOCKER_REGISTRY_G }}/${{secrets.DOCKER_REPO_G}}/party-party-web-app:latest
