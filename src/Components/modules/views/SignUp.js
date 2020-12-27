@@ -1,5 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
+import {useHistory} from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import {Field, Form, FormSpy} from 'react-final-form';
@@ -32,9 +33,10 @@ const useStyles = makeStyles((theme) => ({
 function SignUp() {
     const classes = useStyles();
     const [sent, setSent] = React.useState(false);
+    const history = useHistory();
 
     const validate = (values) => {
-        const errors = required(['firstName', 'lastName', 'email', 'password'], values);
+        const errors = required(['firstName', 'login', 'email', 'password'], values);
 
         if (!errors.email) {
             const emailError = email(values.email);
@@ -46,9 +48,38 @@ function SignUp() {
         return errors;
     };
 
-    const handleSubmit = () => {
-        setSent(true);
-    };
+    const register = (values) => {
+        // Simple POST request with a JSON body using fetch
+        const requestOptions = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+            credentials: 'include',
+            body: JSON.stringify({
+                name: values.firstName,
+                login: values.login,
+                password: values.password,
+                email: values.email
+            })
+        };
+        console.log(requestOptions.body)
+        fetch('http://130.193.43.122:8080/party/2', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                return data;
+            })
+            .then(data => setSent(true))
+    }
+
+    async function handleSubmit(values) {
+        try {
+            await register(values);
+            // userHasAuthenticated(true);
+            history.push("/");
+        } catch (e) {
+            alert(e.message);
+        }
+    }
 
     return (
         <React.Fragment>
@@ -89,10 +120,10 @@ function SignUp() {
                                         <Field
                                             component={RFTextField}
                                             disabled={submitting || sent}
-                                            autoComplete="lname"
+                                            // autoComplete="lname"
                                             fullWidth
-                                            label="Фамилия"
-                                            name="lastName"
+                                            label="Логин"
+                                            name="login"
                                             required
                                         />
                                     </Grid>
