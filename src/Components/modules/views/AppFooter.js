@@ -87,7 +87,7 @@ export default function AppFooter() {
                             spacing={2}
                             alignContent="center"
                         >
-                            <Grid container justify="center" xs={4}>
+                            <Grid item container justify="center" xs={4}>
                                 <a href="https://telegram.org" className={classes.icon}>
                                     <TelegramIcon alt="Telegram"/>
                                 </a>

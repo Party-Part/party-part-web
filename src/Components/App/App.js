@@ -24,10 +24,28 @@ const App = () => {
     const classes = useStyles();
     const userIdFromStorage = JSON.parse(localStorage.getItem("userId"));
     const [userIdInStorage, setUserIdInStorage] = useState(userIdFromStorage);
+    const [isAuthenticated, setIsAuthenticated] = useState(userIdInStorage)
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
     const setUserId = (data) => {
-        localStorage.setItem("userId", JSON.stringify(data));
-        setUserIdInStorage(data);
+        if (data.user_id) {
+            console.log("Logging in... ", data);
+            localStorage.setItem("userId", JSON.stringify(data.user_id));
+            localStorage.setItem("user", JSON.stringify(data));
+            setUser(data)
+            setUserIdInStorage(data.user_id);
+            setIsAuthenticated(true);
+        } else {
+            handleLogout();
+        }
+    }
+
+    const handleLogout = () => {
+        localStorage.removeItem("userId");
+        localStorage.removeItem("user");
+        setUserIdInStorage();
+        setIsAuthenticated(false);
+        setUser()
     }
     return (
         <AuthContext.Provider value={{userIdInStorage, setAuthTokens: setUserId}}>
@@ -40,7 +58,7 @@ const App = () => {
                 {/*        </Typography>*/}
                 {/*    </Toolbar>*/}
                 {/*</AppBar>*/}
-                <AppAppBar/>
+                <AppAppBar isAuthenticated={isAuthenticated} onLogout={handleLogout} user={user}/>
                 <section className="App">
                     <Router>
                         <Route exact path="/" component={HelloPage}/>
