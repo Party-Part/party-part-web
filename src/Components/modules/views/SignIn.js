@@ -50,7 +50,6 @@ function SignIn() {
     };
 
     const handleSubmit = (values) => {
-        console.log(values);
         login(values)
     };
 
@@ -59,7 +58,6 @@ function SignIn() {
     }
 
     const login = (values) => {
-        // Simple POST request with a JSON body using fetch
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -69,19 +67,28 @@ function SignIn() {
                 password: values.password
             })
         };
-        console.log(requestOptions.body)
+
+        setSent(true);
+
         fetch('http://130.193.43.122:8081/users/login', requestOptions)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                console.log(data[0].user_id);
-                if (data[0].user_id) {
-                    setAuthTokens(data[0].user_id);
+            .then(r => {
+                if (r.ok) {
+                    return r.json();
+                } else if (r.status === 404) {
+                    console.log("Неверно!"); // todo: inform user
+                }
+                setLoggedIn(false);
+            })
+            .then(user => {
+                if (user) {
+                    setAuthTokens(user[0]);
                     setLoggedIn(true);
                 }
-                return data;
             })
-            .then(data => setSent(true))
+            .catch((err) => {
+                console.log("Somethig went wrong...", err)
+            })
+            .finally(() => setSent(false))
     }
 
     return (

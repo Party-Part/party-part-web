@@ -4,13 +4,13 @@ import {useAuth} from "./Auth";
 import Redirect from "react-router-dom/es/Redirect";
 
 function PrivateRoute({component: Component, ...rest}) {
-    const isAuthenticated = useAuth();
+    const {userIdInStorage, setIsAuthenticated} = useAuth();
 
     return (
         <Route
             {...rest}
             render={props =>
-                isAuthenticated ? (
+                userIdInStorage ? (
                     <Component {...props} />
                 ) : (
                     <Redirect to="/sign-in"/>
