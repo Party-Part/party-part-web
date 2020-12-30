@@ -12,6 +12,7 @@ import RFTextField from "../form/RFTextField";
 import FormButton from "../form/FormButton";
 import FormFeedback from "../form/FormFeedback";
 import withRoot from "../withRoot";
+import {useAuth} from "../../auth/Auth";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -34,6 +35,7 @@ function SignUp() {
     const classes = useStyles();
     const [sent, setSent] = React.useState(false);
     const history = useHistory();
+    const {setAuthTokens} = useAuth();
 
     const validate = (values) => {
         const errors = required(['firstName', 'login', 'email', 'password'], values);
@@ -51,7 +53,7 @@ function SignUp() {
     const register = (values) => {
         // Simple POST request with a JSON body using fetch
         const requestOptions = {
-            method: 'GET',
+            method: 'POST',
             headers: {'Content-Type': 'application/json'},
             credentials: 'include',
             body: JSON.stringify({
@@ -61,20 +63,19 @@ function SignUp() {
                 email: values.email
             })
         };
-        console.log(requestOptions.body)
-        fetch('http://130.193.43.122:8080/party/2', requestOptions)
+        setSent(true)
+        fetch('http://130.193.43.122:8081/users', requestOptions)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                setAuthTokens(data);
                 return data;
             })
-            .then(data => setSent(true))
+            .then(data => setSent(false))
     }
 
-    async function handleSubmit(values) {
+    function handleSubmit(values) {
         try {
-            await register(values);
-            // userHasAuthenticated(true);
+            register(values);
             history.push("/");
         } catch (e) {
             alert(e.message);
@@ -164,7 +165,7 @@ function SignUp() {
                                     color="secondary"
                                     fullWidth
                                 >
-                                    {submitting || sent ? 'Секунду…' : 'Рагистрация'}
+                                    {submitting || sent ? 'Секунду…' : 'Регистрация'}
                                 </FormButton>
                             </form>
                         )}
