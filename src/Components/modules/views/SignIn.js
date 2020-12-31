@@ -12,11 +12,15 @@ import FormButton from "../form/FormButton";
 import withRoot from "../withRoot";
 import Redirect from "react-router-dom/es/Redirect";
 import {useAuth} from "../../auth/Auth";
+import Alert from '@material-ui/lab/Alert';
 
 
 const useStyles = makeStyles((theme) => ({
     layout: {
         marginBottom: '96px'
+    },
+    alert: {
+        marginTop: theme.spacing(2)
     },
     form: {
         marginTop: theme.spacing(2),
@@ -34,6 +38,7 @@ function SignIn() {
     const classes = useStyles();
     const [sent, setSent] = React.useState(false);
     const [isLoggedIn, setLoggedIn] = React.useState(false);
+    const [noSuchUser, setNoSuchUser] = React.useState(false);
     const {setAuthTokens} = useAuth();
 
     const validate = (values) => {
@@ -75,7 +80,7 @@ function SignIn() {
                 if (r.ok) {
                     return r.json();
                 } else if (r.status === 404) {
-                    console.log("Неверно!"); // todo: inform user
+                    setNoSuchUser(true)
                 }
                 setLoggedIn(false);
             })
@@ -110,6 +115,20 @@ function SignIn() {
                                 Регистрация тут
                             </Link>
                         </Typography>
+                        {noSuchUser ? (
+                                <Alert
+                                    onClose={() => {
+                                        setNoSuchUser(false)
+                                    }}
+                                    variant="outlined"
+                                    severity="error"
+                                    className={classes.alert}
+                                >
+                                    Такого пользователя не существует! Попробуйте еще раз.
+                                </Alert>
+                            ) :
+                            (<div/>)
+                        }
                     </React.Fragment>
                     <Form
                         onSubmit={handleSubmit}
