@@ -58,7 +58,7 @@ function ForgotPassword() {
                             Забыли пароль?
                         </Typography>
                         <Typography variant="body2" align="center">
-                            {"Укажите почту, куда можно мы отправи ссылку для восстановления пароля"}
+                            {"Укажите почту, куда мы отправим ссылку для восстановления пароля"}
                         </Typography>
                     </React.Fragment>
                     <Form
