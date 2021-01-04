@@ -58,7 +58,7 @@ function AppAppBar(props) {
                                 variant="h6"
                                 underline="none"
                                 className={clsx(classes.rightLink, classes.linkSecondary)}
-                                href="/"
+                                href="/user/home"
                             >
                                 {props.user.name}
                             </Link>

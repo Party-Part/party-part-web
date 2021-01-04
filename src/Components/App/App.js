@@ -12,6 +12,7 @@ import SignIn from "../modules/views/SignIn";
 import ForgotPassword from "../modules/views/ForgotPassword";
 import PrivateRoute from "../auth/PrivateRoute";
 import {AuthContext} from "../auth/Auth";
+import UserHome from "../modules/user/UserHome";
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -66,7 +67,8 @@ const App = () => {
                         <Route exact path="/sign-in" component={SignIn}/>
                         <Route exact path="/forgot-password" component={ForgotPassword}/>
                         <PrivateRoute exact path="/party" component={CreatePartyPage}/>
-                        <PrivateRoute exact path="/party/:id" render={renderPartyDetailPage}/>
+                        <PrivateRoute exact path="/party/:id" component={renderPartyDetailPage}/>
+                        <PrivateRoute exact path="/user/home" component={() => <UserHome user={user}/>}/>
                     </Router>
                 </section>
                 <AppFooter/>
