@@ -13,6 +13,7 @@ import FormButton from "../form/FormButton";
 import FormFeedback from "../form/FormFeedback";
 import withRoot from "../withRoot";
 import {useAuth} from "../../auth/Auth";
+import {register} from "../../../service/user";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -50,21 +51,9 @@ function SignUp() {
         return errors;
     };
 
-    const register = (values) => {
-        // Simple POST request with a JSON body using fetch
-        const requestOptions = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            credentials: 'include',
-            body: JSON.stringify({
-                name: values.firstName,
-                login: values.login,
-                password: values.password,
-                email: values.email
-            })
-        };
+    const reg = (values) => {
         setSent(true)
-        fetch('http://130.193.43.122:8081/users', requestOptions)
+        register(values)
             .then(response => response.json())
             .then(data => {
                 setAuthTokens(data);
@@ -75,7 +64,7 @@ function SignUp() {
 
     function handleSubmit(values) {
         try {
-            register(values);
+            reg(values);
             history.push("/");
         } catch (e) {
             alert(e.message);

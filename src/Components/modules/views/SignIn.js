@@ -13,7 +13,7 @@ import withRoot from "../withRoot";
 import Redirect from "react-router-dom/es/Redirect";
 import {useAuth} from "../../auth/Auth";
 import Alert from '@material-ui/lab/Alert';
-
+import {login} from '../../../service/user'
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -55,27 +55,9 @@ function SignIn() {
     };
 
     const handleSubmit = (values) => {
-        login(values)
-    };
-
-    if (isLoggedIn) {
-        return <Redirect to="/"/>;
-    }
-
-    const login = (values) => {
-        const requestOptions = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            credentials: 'include',
-            body: JSON.stringify({
-                login: values.login,
-                password: values.password
-            })
-        };
-
         setSent(true);
 
-        fetch('http://130.193.43.122:8081/users/login', requestOptions)
+        login(values.login, values.password)
             .then(r => {
                 if (r.ok) {
                     return r.json();
@@ -94,6 +76,10 @@ function SignIn() {
                 console.log("Somethig went wrong...", err)
             })
             .finally(() => setSent(false))
+    };
+
+    if (isLoggedIn) {
+        return <Redirect to="/"/>;
     }
 
     return (

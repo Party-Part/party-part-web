@@ -18,12 +18,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const amounts = (dict) => {
-    console.log(dict);
     let values = [];
     for (var key in dict) {
         values.push(dict[key].amount);
     }
-    console.log(values)
     return values;
 }
 

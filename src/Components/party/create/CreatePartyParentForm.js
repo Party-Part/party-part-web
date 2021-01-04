@@ -12,6 +12,8 @@ import DutiesForm from "./DutiesForm";
 import {Link} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Typography from "../../modules/components/Typography";
+import {createParty} from "../../../service/party";
+import {registerAnon} from "../../../service/user";
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -53,17 +55,20 @@ const useStyles = makeStyles((theme) => ({
 
 const steps = ['Пати', 'Участники', 'Расходы', 'Проверяем'];
 
-export default function CreatePartyParentForm() {
+export default function CreatePartyParentForm(props) {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
+    const [nextDutyId, setNextDutyId] = React.useState(0);
 
     const [partyName, setPartyName] = React.useState("");
     const [currency, setCurrency] = React.useState("");
     const [splitMethod, setSplitMethod] = React.useState("")
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [participants, setParticipants] = React.useState([]);
+    const [registered, setRegistered] = React.useState([]); // todo: remove this
     const [duties, setDuties] = React.useState({})
-    const [nextDutyId, setNextDutyId] = React.useState(0);
+
+    const [partyId, setPartyId] = React.useState();
 
     const handlePartyNameChange = (e: React.FormEvent) => {
         e.preventDefault();
@@ -88,6 +93,10 @@ export default function CreatePartyParentForm() {
         setParticipants((prevState => [...prevState, participant]));
     }
 
+    const addRegistered = (participant) => {
+        setRegistered((prevState => [...prevState, participant]));
+    }
+
     const handleDeleteParticipant = (index) => {
         setParticipants((prevState) => [...prevState.filter((p, i) => i !== index)]);
     }
@@ -106,17 +115,13 @@ export default function CreatePartyParentForm() {
     }
 
     const handleChangeDuty = (id, payerName, paymentSubject, paymentAmount) => {
-        console.log(id)
         let duty = duties[id];
         // duty.whoPaid = payerName;
         duty.forWhat = paymentSubject;
         duty.amount = paymentAmount;
         duty.currency = 'рублей';
         let copied = {...duties};
-        console.log(copied);
         copied[id] = duty;
-        console.log(duty);
-        console.log(copied)
         setDuties(copied);
     }
 
@@ -132,6 +137,26 @@ export default function CreatePartyParentForm() {
     const handleBack = () => {
         setActiveStep(activeStep - 1);
     };
+
+    // todo: split all logic to different steps
+    const handleCalc = () => {
+        createParty({
+            userId: props.user.user_id,
+            name: partyName
+        }).then(result => {
+            setPartyId(result.data.partyId);
+        });
+
+        participants.map(p =>
+            registerAnon(p)
+                .then(r => r.json())
+                .then(registerResult => {
+                    let {user_id, name} = registerResult;
+                    addRegistered({id: user_id, name: name});
+                    console.log({id: user_id, name: name})
+                })
+        );
+    }
 
     const getStepContent = (step) => {
         switch (step) {
@@ -200,6 +225,7 @@ export default function CreatePartyParentForm() {
                                             color="primary"
                                             component={Link}
                                             to="/party/11" //todo: fetch from backend
+                                            onClick={handleCalc}
                                             className={classes.button}
                                         >
                                             Расчитать долги

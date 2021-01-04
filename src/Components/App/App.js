@@ -66,7 +66,7 @@ const App = () => {
                         <Route exact path="/sign-up" component={SignUp}/>
                         <Route exact path="/sign-in" component={SignIn}/>
                         <Route exact path="/forgot-password" component={ForgotPassword}/>
-                        <PrivateRoute exact path="/party" component={CreatePartyPage}/>
+                        <PrivateRoute exact path="/party" component={() => <CreatePartyPage user={user}/>}/>
                         <PrivateRoute exact path="/party/:id" component={renderPartyDetailPage}/>
                         <PrivateRoute exact path="/user/home" component={() => <UserHome user={user}/>}/>
                     </Router>

@@ -5,7 +5,7 @@ import CreatePartyParentForm from "./CreatePartyParentForm";
 function CreatePartyPage(props) {
     return (
         <Container className="Hello-page">
-            <CreatePartyParentForm/>
+            <CreatePartyParentForm user={props.user}/>
         </Container>
     );
 }
