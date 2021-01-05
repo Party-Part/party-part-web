@@ -1,5 +1,5 @@
 import Container from "@material-ui/core/Container";
-import React from "react";
+import React, {useEffect} from "react";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "../../modules/components/Typography";
@@ -7,6 +7,8 @@ import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import PaymentsTable from "./PaymentsTable";
+import {getUserInfoById} from "../../../service/user";
+import {calculateParty} from "../../../service/party";
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -47,19 +49,43 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-// todo: mock data, calc real date in backend
-const calculatedDuties = {};
-// todo: mock data, calc real date in backend
-const source = [
-    {name_source: "Дима", name_target: "Таня", amount: 100},
-    {name_source: "Таня", name_target: "Коля", amount: 200},
-    {name_source: "Саша", name_target: "Вася", amount: 999},
-    {name_source: "Володя", name_target: "Дима", amount: 0},
-];
-
-
 function PartyDetailPage(props) {
     const classes = useStyles();
+    const [payments, setPayments] = React.useState([]);
+
+    useEffect(() => {
+        async function findUserNameById(id) {
+            let resolve = (await getUserInfoById(id)).json()
+            console.log(resolve);
+            return resolve
+        }
+
+        calculateParty(props.partyId)
+            .then(res => res.data)
+            .then(payments => {
+                return payments.map(p => {
+                    return {
+                        name_source: p.userSenderId,
+                        name_target: p.userReceiverId,
+                        amount: p.cost
+                    }
+                });
+            })
+            .then(async calculated => {
+                return Promise.all(calculated.map(async p => {
+                    return {
+                        name_source: (await findUserNameById(p.name_source)).name,
+                        name_target: (await findUserNameById(p.name_target)).name,
+                        amount: p.amount
+                    }
+                }))
+            })
+            .then(calculated => {
+                console.log(calculated);
+                setPayments(calculated)
+            })
+
+    }, []);
 
     return (
         <Container className={classes.layout}>
@@ -156,7 +182,7 @@ function PartyDetailPage(props) {
                               justify="center">
                             <Grid item xs={12}>
                                 <div className={classes.table}>
-                                    <PaymentsTable source={source}/>
+                                    <PaymentsTable source={payments}/>
                                 </div>
                             </Grid>
                         </Grid>
