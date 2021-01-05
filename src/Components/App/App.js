@@ -30,7 +30,6 @@ const App = () => {
 
     const setUserId = (data) => {
         if (data.user_id) {
-            console.log("Logging in... ", data);
             localStorage.setItem("userId", JSON.stringify(data.user_id));
             localStorage.setItem("user", JSON.stringify(data));
             setUser(data)
@@ -52,13 +51,6 @@ const App = () => {
         <AuthContext.Provider value={{userIdInStorage, setAuthTokens: setUserId}}>
             <React.Fragment>
                 <CssBaseline/>
-                {/*<AppBar position="absolute" color="primary" className={classes.appBar}>*/}
-                {/*    <Toolbar>*/}
-                {/*        <Typography variant="h6" color="inherit" noWrap>*/}
-                {/*            Party Part*/}
-                {/*        </Typography>*/}
-                {/*    </Toolbar>*/}
-                {/*</AppBar>*/}
                 <AppAppBar isAuthenticated={isAuthenticated} onLogout={handleLogout} user={user}/>
                 <section className="App">
                     <Router>

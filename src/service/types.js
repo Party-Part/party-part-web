@@ -18,17 +18,6 @@
  * @property {string} chatId Telegram chat id
  */
 
-/**
- * @typedef AddPartyEntryRequest
- * @memberof module:types
- *
- * @property {string} userCreatorId The user creator id
- * @property {string} userWhoPaidId The user who paid id
- * @property {string} name The entry name
- * @property {string} cost The entry cost
- * @property {string} currency The entry currency
- * @property {string} split Array how to split enrty in format [("UserId", "percent");(...),..]. For example, (4,50);(5,200) By default - equally by all members
- */
 
 /**
  * @typedef Party

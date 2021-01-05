@@ -39,3 +39,11 @@ export function registerAnon(name) {
     };
     return fetch('http://130.193.43.122:8081/users/anon', requestOptions)
 }
+
+export function getUserInfoById(id) {
+    const requestOptions = {
+        method: 'GET',
+        credentials: 'include',
+    };
+    return fetch('http://130.193.43.122:8081/users/id/' + id, requestOptions)
+}

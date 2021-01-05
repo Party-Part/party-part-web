@@ -12,7 +12,7 @@ import DutiesForm from "./DutiesForm";
 import {Link} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Typography from "../../modules/components/Typography";
-import {createParty} from "../../../service/party";
+import {addPartyEntry, addPartyMember, createParty} from "../../../service/party";
 import {registerAnon} from "../../../service/user";
 
 const useStyles = makeStyles((theme) => ({
@@ -65,9 +65,9 @@ export default function CreatePartyParentForm(props) {
     const [splitMethod, setSplitMethod] = React.useState("")
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [participants, setParticipants] = React.useState([]);
-    const [registered, setRegistered] = React.useState([]); // todo: remove this
     const [duties, setDuties] = React.useState({})
 
+    const [registered, setRegistered] = React.useState([]); // todo: remove this
     const [partyId, setPartyId] = React.useState();
 
     const handlePartyNameChange = (e: React.FormEvent) => {
@@ -91,10 +91,6 @@ export default function CreatePartyParentForm(props) {
 
     const handleAddParticipant = (participant) => {
         setParticipants((prevState => [...prevState, participant]));
-    }
-
-    const addRegistered = (participant) => {
-        setRegistered((prevState => [...prevState, participant]));
     }
 
     const handleDeleteParticipant = (index) => {
@@ -125,12 +121,17 @@ export default function CreatePartyParentForm(props) {
         setDuties(copied);
     }
 
+    const onAddRegistered = (participant) => {
+        setRegistered((prevState => [...prevState, participant]));
+    }
+
     const handlers = {
         handlePartyNameChange, handleCurrencyChange, handleSplitMethodChange,
         handleDateChange, handleDeleteParticipant, handleAddParticipant, handleAddDuty, handleChangeDuty
     }
 
     const handleNext = () => {
+        doServiceCall(activeStep);
         setActiveStep(activeStep + 1);
     };
 
@@ -138,24 +139,80 @@ export default function CreatePartyParentForm(props) {
         setActiveStep(activeStep - 1);
     };
 
-    // todo: split all logic to different steps
-    const handleCalc = () => {
+    const doServiceCall = (step) => {
+        switch (step) {
+            case 0:
+                break;
+            case 1:
+                onPartyCreated();
+                break;
+            case 2:
+                registerUsersAndAddToParty();
+                break;
+            case 3:
+                addDuties();
+                break;
+            default:
+                break;
+        }
+    }
+
+    function registerUsersAndAddToParty() {
+        Promise.all(participants.map(p =>
+            registerAnon(p)
+                .then(r => r.json())
+                .then(registerResult => {
+                    let {user_id, name} = registerResult;
+                    onAddRegistered({id: user_id, name: name});
+                    return addPartyMember(partyId, parseInt(user_id)).then((res => console.log(res)))
+                })
+                .catch(e => console.log(e))
+        )).finally(() => console.log('ok'))
+    }
+
+    const onPartyCreated = () => {
         createParty({
             userId: props.user.user_id,
             name: partyName
         }).then(result => {
             setPartyId(result.data.partyId);
-        });
+        })
+    }
 
-        participants.map(p =>
-            registerAnon(p)
-                .then(r => r.json())
-                .then(registerResult => {
-                    let {user_id, name} = registerResult;
-                    addRegistered({id: user_id, name: name});
-                    console.log({id: user_id, name: name})
-                })
-        );
+    // const handleCalc = () => {
+    //     calculateParty(partyId)
+    //         .then(res => res.data)
+    //         .then(res => {
+    //             console.log(res);
+    //             return res;
+    //         })
+    //         .then(res => props.onCalculated(res));
+    // }
+
+    function addDuties() {
+        for (const [id, duty] of Object.entries(duties)) {
+            let {whoPaid, forWhat, amount, currency} = duty;
+            let userId = findUserIdByName(participants[whoPaid]);
+            addPartyEntry(partyId, {
+                userCreatorId: userId,
+                userWhoPaidId: userId,
+                name: forWhat,
+                cost: amount,
+                currency: "rub",
+                split: ""
+            }).then(res => console.log(res))
+                .catch(e => console.log(e));
+        }
+    }
+
+    function findUserIdByName(name) {
+        console.log('Finding ' + name + 'in...', registered)
+        for (let user of registered) {
+            console.log(user)
+            if (user.name === name) {
+                return user.id;
+            }
+        }
     }
 
     const getStepContent = (step) => {
@@ -224,8 +281,8 @@ export default function CreatePartyParentForm(props) {
                                             variant="contained"
                                             color="primary"
                                             component={Link}
-                                            to="/party/11" //todo: fetch from backend
-                                            onClick={handleCalc}
+                                            to={"/party/" + partyId}
+                                            // onClick={handleCalc}
                                             className={classes.button}
                                         >
                                             Расчитать долги
