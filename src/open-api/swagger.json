@@ -1,0 +1,679 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a service for manage all stuff which connected with parties. [https://github.com/Party-Part](GitHub)",
+    "version": "1.0.0",
+    "title": "Party Part - Party service",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "ivanbrusentsev@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:8080",
+  "tags": [
+    {
+      "name": "party",
+      "description": "Everything about parties",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://github.com/Party-Part"
+      }
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/party": {
+      "post": {
+        "tags": [
+          "party"
+        ],
+        "summary": "Create a new party",
+        "description": "",
+        "operationId": "createParty",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userId",
+            "schema": {
+              "$ref": "#/definitions/CreatePartyRequest"
+            },
+            "description": "User who creates the party",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Party"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/party_tg": {
+      "post": {
+        "tags": [
+          "party"
+        ],
+        "summary": "Create a new party from telegram or return existing party",
+        "description": "",
+        "operationId": "getOrCreatePartyTelegram",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userId",
+            "schema": {
+              "$ref": "#/definitions/CreatePartyTelegramRequest"
+            },
+            "description": "User who creates the party",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Party"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/party_tg/{chatId}": {
+      "get": {
+        "tags": [
+          "party"
+        ],
+        "summary": "get party from tg chat id",
+        "description": "",
+        "operationId": "getTgParty",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "chatId",
+            "type": "string",
+            "description": "The telegram chat id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Party"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/party/{partyId}": {
+      "get": {
+        "tags": [
+          "party"
+        ],
+        "summary": "Get party information by id",
+        "description": "",
+        "operationId": "getParty",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "partyId",
+            "type": "string",
+            "description": "The patry id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Party"
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/party/{partyId}/member": {
+      "put": {
+        "tags": [
+          "party"
+        ],
+        "summary": "Add member to a party",
+        "description": "",
+        "operationId": "addPartyMember",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "partyId",
+            "type": "string",
+            "description": "The patry id",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The user id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "party"
+        ],
+        "summary": "Get all members of a party",
+        "description": "",
+        "operationId": "getPartyMembers",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "partyId",
+            "type": "string",
+            "description": "The patry id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ArrayOfMembers"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/party/{partyId}/member/{memberId}": {
+      "delete": {
+        "tags": [
+          "party"
+        ],
+        "summary": "Add member to a party",
+        "description": "",
+        "operationId": "deletePartyMember",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "partyId",
+            "type": "string",
+            "description": "The patry id",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "memberId",
+            "type": "string",
+            "description": "The member id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Member not found"
+          }
+        }
+      }
+    },
+    "/party/{partyId}/entry": {
+      "post": {
+        "tags": [
+          "party"
+        ],
+        "summary": "Add entry to a party",
+        "description": "",
+        "operationId": "addPartyEntry",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "partyId",
+            "type": "string",
+            "description": "The patry id",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "addPartyEntryRequest",
+            "schema": {
+              "$ref": "#/definitions/AddPartyEntryRequest"
+            },
+            "description": "add party enrty request",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string",
+              "description": "The patry id"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "party"
+        ],
+        "summary": "Get all entries of a party",
+        "description": "",
+        "operationId": "getPartyEntries",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "partyId",
+            "type": "string",
+            "description": "The patry id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ArrayOfEntries"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/party/{partyId}/entry/{entryId}": {
+      "delete": {
+        "tags": [
+          "party"
+        ],
+        "summary": "Delete entry from a party",
+        "description": "",
+        "operationId": "deletePartyEntry",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "partyId",
+            "type": "string",
+            "description": "The patry id",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "entryId",
+            "type": "string",
+            "description": "The entry id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string",
+              "description": "The patry id"
+            }
+          },
+          "404": {
+            "description": "Entry not found"
+          }
+        }
+      }
+    },
+    "/party/{partyId}/calculate": {
+      "get": {
+        "tags": [
+          "party"
+        ],
+        "summary": "Calculate payments for party",
+        "description": "",
+        "operationId": "calculateParty",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "partyId",
+            "type": "string",
+            "description": "The patry id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ArrayOfPayments"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/party/{partyId}/payment": {
+      "get": {
+        "tags": [
+          "party"
+        ],
+        "summary": "Get all payments for party",
+        "description": "",
+        "operationId": "getPartyPayments",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "partyId",
+            "type": "string",
+            "description": "The patry id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ArrayOfPayments"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CreatePartyRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Big int user creator id"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of a party"
+        }
+      }
+    },
+    "CreatePartyTelegramRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Big int user creator id"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of a party"
+        },
+        "chatId": {
+          "type": "string",
+          "description": "Telegram chat id"
+        }
+      }
+    },
+    "AddPartyEntryRequest": {
+      "type": "object",
+      "properties": {
+        "userCreatorId": {
+          "type": "string",
+          "description": "The user creator id"
+        },
+        "userWhoPaidId": {
+          "type": "string",
+          "description": "The user who paid id"
+        },
+        "name": {
+          "type": "string",
+          "description": "The entry name"
+        },
+        "cost": {
+          "type": "string",
+          "description": "The entry cost"
+        },
+        "currency": {
+          "type": "string",
+          "description": "The entry currency"
+        },
+        "split": {
+          "type": "string",
+          "description": "Array how to split enrty in format [(\"UserId\", \"percent\");(...),..]. For example, (4,50);(5,200) By default - equally by all members"
+        }
+      }
+    },
+    "Party": {
+      "type": "object",
+      "properties": {
+        "partyId": {
+          "type": "string",
+          "description": "Big int party id"
+        },
+        "userCreatorId": {
+          "type": "string",
+          "description": "Big int user creator id"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of a party"
+        }
+      }
+    },
+    "Entry": {
+      "type": "object",
+      "properties": {
+        "entryId": {
+          "type": "string",
+          "description": "Big int enrty id"
+        },
+        "partyId": {
+          "type": "string",
+          "description": "Big int party id"
+        },
+        "userCreatorId": {
+          "type": "string",
+          "description": "Big int user creator id"
+        },
+        "userWhoPaidId": {
+          "type": "string",
+          "description": "Big int user who paid for consumption id"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of a consumption"
+        },
+        "cost": {
+          "type": "string",
+          "description": "Cunsumption cost"
+        },
+        "currency": {
+          "type": "string",
+          "description": "Cunsumption currency"
+        },
+        "split": {
+          "type": "array",
+          "description": "A map with key as a user id and value as a user's proportion",
+          "items": {
+            "$ref": "#/definitions/Split"
+          }
+        }
+      }
+    },
+    "Member": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Big int user id"
+        },
+        "name": {
+          "type": "string",
+          "description": "User name"
+        }
+      }
+    },
+    "Split": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Big int user id"
+        },
+        "proportion": {
+          "type": "string",
+          "description": "User's proportion in percents"
+        }
+      }
+    },
+    "Payment": {
+      "type": "object",
+      "properties": {
+        "paymentId": {
+          "type": "string",
+          "description": "Big int payment id"
+        },
+        "userSenderId": {
+          "type": "string",
+          "description": "Big int user sender id"
+        },
+        "userReceiverId": {
+          "type": "string",
+          "description": "Big int user reciever id"
+        },
+        "partyId": {
+          "type": "string",
+          "description": "Big int party id"
+        },
+        "cost": {
+          "type": "string",
+          "description": "Payment cost"
+        },
+        "currency": {
+          "type": "string",
+          "description": "Payment currency"
+        },
+        "isPaid": {
+          "type": "boolean",
+          "description": "Is user sender sent the payment"
+        },
+        "isConfirmed": {
+          "type": "boolean",
+          "description": "Is user receiver confirmed the payment"
+        }
+      }
+    },
+    "ArrayOfMembers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Member"
+      }
+    },
+    "ArrayOfEntries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Entry"
+      }
+    },
+    "ArrayOfPayments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Payment"
+      }
+    }
+  }
+}
