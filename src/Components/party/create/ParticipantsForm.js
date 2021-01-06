@@ -52,8 +52,8 @@ export default function ParticipantsForm(props) {
                             return <Chip
                                 key={index}
                                 id={index}
-                                avatar={<Avatar>{participant[0]}</Avatar>}
-                                label={participant}
+                                avatar={<Avatar>{participant.name[0]}</Avatar>}
+                                label={participant.name}
                                 onDelete={() => props.onDeleteParticipant(index)}
                                 variant="outlined"
                                 className={classes.nested}

@@ -8,7 +8,8 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import PaymentsTable from "./PaymentsTable";
 import {getUserInfoById} from "../../../service/user";
-import {calculateParty} from "../../../service/party";
+import {addPartyEntry, calculateParty, getParty, getPartyEntries, getPartyMembers} from "../../../service/party";
+import DutiesForm from "../create/DutiesForm";
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -42,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: 6,
     },
     table: {
-        // padding: 25
+        paddingTop: 25
     },
     grid: {
         padding: theme.spacing(4)
@@ -51,15 +52,72 @@ const useStyles = makeStyles((theme) => ({
 
 function PartyDetailPage(props) {
     const classes = useStyles();
+
+    const userIdFromStorage = JSON.parse(localStorage.getItem("userId"));
+
     const [payments, setPayments] = React.useState([]);
+    const [partyInfo, setPartyInfo] = React.useState({
+        partyId: "",
+        userCreatorId: "",
+        name: "Название..."
+    });
+    const [duties, setDuties] = React.useState({});
+    const [splitMethod, setSplitMethod] = React.useState("")
+    const [selectedDate, setSelectedDate] = React.useState(new Date());
+    const [participants, setParticipants] = React.useState([]);
+    const [nextDutyId, setNextDutyId] = React.useState(0);
+
+    const handleSplitMethodChange = (e: React.FormEvent) => {
+        e.preventDefault();
+        setSplitMethod(e.target.value)
+    }
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    }
+
+    const handleAddDuty = (id, payerId, paymentSubject, paymentAmount) => {
+        console.log(payerId, userIdFromStorage, participants[payerId]);
+        addPartyEntry(props.partyId, {
+            userCreatorId: userIdFromStorage,
+            userWhoPaidId: participants[payerId].userId,
+            name: paymentSubject,
+            cost: paymentAmount,
+            currency: "rub",
+            split: ""
+        }).then(ignore => {
+            setDuties(prevState => ([
+                ...prevState,
+                {
+                    id: id,
+                    whoPaid: participants[payerId].name,
+                    forWhat: paymentSubject,
+                    amount: paymentAmount,
+                    currency: 'rub'
+                }
+            ]))
+        })
+        setNextDutyId(nextDutyId + 1)
+    }
+
+    const handleChangeDuty = (id, payerName, paymentSubject, paymentAmount) => {
+        // todo: enable changing
+    }
+
+    async function findUserNameById(id) {
+        let resolve = (await getUserInfoById(id)).json()
+        return resolve
+    }
+
+    function findUserNameByIdLocal(id) {
+        for (let participant of participants) {
+            if (participant.userId === id) {
+                return participant.name;
+            }
+        }
+    }
 
     useEffect(() => {
-        async function findUserNameById(id) {
-            let resolve = (await getUserInfoById(id)).json()
-            console.log(resolve);
-            return resolve
-        }
-
         calculateParty(props.partyId)
             .then(res => res.data)
             .then(payments => {
@@ -81,11 +139,40 @@ function PartyDetailPage(props) {
                 }))
             })
             .then(calculated => {
-                console.log(calculated);
                 setPayments(calculated)
             })
+            .catch(e => console.log(e))
 
-    }, []);
+    }, [duties]);
+
+    useEffect(() => {
+        getParty(props.partyId)
+            .then(res => res.data)
+            .then(info => setPartyInfo(info))
+    }, [])
+
+    useEffect(() => {
+        getPartyEntries(props.partyId)
+            .then(res => res.data)
+            .then(async entries => {
+                return Promise.all(entries.map(async entry => {
+                    return {
+                        id: entry.entryId,
+                        whoPaid: (await findUserNameById(entry.userWhoPaidId)).name,
+                        forWhat: entry.name,
+                        amount: entry.cost,
+                        currency: entry.currency
+                    }
+                }))
+            })
+            .then(p => setDuties(p))
+    }, [])
+
+    useEffect(() => {
+        getPartyMembers(props.partyId)
+            .then(res => res.data)
+            .then(p => setParticipants(p))
+    }, [])
 
     return (
         <Container className={classes.layout}>
@@ -113,7 +200,7 @@ function PartyDetailPage(props) {
                         {/*</Grid>*/}
 
                         <Grid item xs={12}>
-                            <Typography variant="h6"> Название пати</Typography>
+                            <Typography variant="h6">{partyInfo.name}</Typography>
                         </Grid>
                         <Grid container
                               item
@@ -183,6 +270,21 @@ function PartyDetailPage(props) {
                             <Grid item xs={12}>
                                 <div className={classes.table}>
                                     <PaymentsTable source={payments}/>
+                                </div>
+                            </Grid>
+                            <Grid item xs={12} spacing={2}>
+                                <div className={classes.table}>
+                                    <DutiesForm
+                                        splitMethod={splitMethod}
+                                        selectedDate={selectedDate}
+                                        participants={participants}
+                                        duties={duties}
+                                        nextDutyId={nextDutyId}
+                                        onSplitMethodChange={handleSplitMethodChange}
+                                        onDateChange={handleDateChange}
+                                        onAddDuty={handleAddDuty}
+                                        onChangeDuty={handleChangeDuty}
+                                    />
                                 </div>
                             </Grid>
                         </Grid>
