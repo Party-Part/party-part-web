@@ -97,6 +97,23 @@ export function getPartyMembers(partyId) {
 }
 
 /**
+ * Add member to a party
+ *
+ * @param {string} partyId The patry id
+ * @param {string} memberId The member id
+ * @return {Promise<object>} successful operation
+ */
+export function deletePartyMember(partyId, memberId) {
+  const parameters = {
+    path: {
+      partyId,
+      memberId
+    }
+  }
+  return gateway.request(deletePartyMemberOperation, parameters)
+}
+
+/**
  * Add entry to a party
  *
  * @param {string} partyId The patry id
@@ -128,6 +145,23 @@ export function getPartyEntries(partyId) {
     }
   }
   return gateway.request(getPartyEntriesOperation, parameters)
+}
+
+/**
+ * Delete entry from a party
+ *
+ * @param {string} partyId The patry id
+ * @param {string} entryId The entry id
+ * @return {Promise<string>} successful operation
+ */
+export function deletePartyEntry(partyId, entryId) {
+  const parameters = {
+    path: {
+      partyId,
+      entryId
+    }
+  }
+  return gateway.request(deletePartyEntryOperation, parameters)
 }
 
 /**
@@ -193,6 +227,11 @@ const getPartyMembersOperation = {
   method: 'get'
 }
 
+const deletePartyMemberOperation = {
+  path: '/party/{partyId}/member/{memberId}',
+  method: 'delete'
+}
+
 const addPartyEntryOperation = {
   path: '/party/{partyId}/entry',
   contentTypes: ['application/json'],
@@ -202,6 +241,11 @@ const addPartyEntryOperation = {
 const getPartyEntriesOperation = {
   path: '/party/{partyId}/entry',
   method: 'get'
+}
+
+const deletePartyEntryOperation = {
+  path: '/party/{partyId}/entry/{entryId}',
+  method: 'delete'
 }
 
 const calculatePartyOperation = {

@@ -1,16 +1,9 @@
 import React, {useCallback} from 'react';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import {Button} from "@material-ui/core";
-import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
 import 'date-fns';
-import DateFnsUtils from '@date-io/date-fns';
-import {KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
 import {makeStyles} from "@material-ui/core/styles";
-import DutiesTable from "./DutiesTable";
+import DutiesTable from "../DutiesTable";
+import {AddDutyForm} from "../AddDutyForm";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,31 +16,36 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const initDataSource = (props) => {
-    const result = []
-    for (var key in props.duties) {
-        result.push({
-            id: props.duties[key].id,
-            whoPaid: props.participants[props.duties[key].whoPaid],
-            forWhat: props.duties[key].forWhat,
-            amount: props.duties[key].amount,
-            currency: props.duties[key].currency
-        })
-    }
-
-    return result
-}
+// const initDataSource = (props) => {
+//     const result = []
+//     console.log('Initializing duties...')
+//     for (var key in props.duties) {
+//         console.log(props.duties[key])
+//         result.push({
+//             id: props.duties[key].id,
+//             whoPaid: props.duties[key].whoPaid,
+//             forWhat: props.duties[key].forWhat,
+//             amount: props.duties[key].amount,
+//             currency: props.duties[key].currency
+//         })
+//     }
+//     console.log(result)
+//     return result
+// }
 
 export default function DutiesForm(props) {
     const classes = useStyles();
 
-    const [currentPayer, setCurrentPayer] = React.useState(props.participants[0]);
+    const [currentPayer, setCurrentPayer] = React.useState("");
     const [paymentSubject, setPaymentSubject] = React.useState("")
     const [paymentAmount, setPaymentAmount] = React.useState(0);
 
-    const [dutiesDatasource, setDutiesDatasource] = React.useState(initDataSource(props));
+    // const [dutiesDatasource, setDutiesDatasource] = React.useState(initDataSource(props));
+    // const [dutiesDatasource, setDutiesDatasource] = React.useState();
 
     const onPayerChange = (e: React.FormEvent) => {
+        console.log('Payer changed')
+        console.log(e.target.value)
         setCurrentPayer(e.target.value)
     }
 
@@ -61,13 +59,13 @@ export default function DutiesForm(props) {
 
     const onAddDuty = (e: React.FormEvent) => {
         props.onAddDuty(props.nextDutyId, currentPayer, paymentSubject, paymentAmount)
-        setDutiesDatasource(prevState => [...prevState, {
-            id: props.nextDutyId,
-            whoPaid: props.participants[currentPayer],
-            forWhat: paymentSubject,
-            amount: paymentAmount,
-            currency: 'рублей'
-        }]);
+        // setDutiesDatasource(prevState => [...prevState, {
+        //     id: props.nextDutyId,
+        //     whoPaid: props.participants[currentPayer],
+        //     forWhat: paymentSubject,
+        //     amount: paymentAmount,
+        //     currency: 'рублей'
+        // }]);
         setPaymentSubject("");
         setPaymentAmount(0);
     }
@@ -81,11 +79,11 @@ export default function DutiesForm(props) {
     }
 
     const onRowChanged = useCallback(({value, columnId, rowIndex}) => {
-        const data = [...dutiesDatasource];
+        const data = [...props.duties];
         data[rowIndex][columnId] = value;
-        setDutiesDatasource(data);
+        // setDutiesDatasource(data);
         props.onChangeDuty(data[rowIndex].id, data[rowIndex].whoPaid, data[rowIndex].forWhat, data[rowIndex].amount)
-    }, [dutiesDatasource])
+    }, [props.duties])
 
     return (
         <React.Fragment>
@@ -93,80 +91,23 @@ export default function DutiesForm(props) {
                 {isEmpty(props.duties) ?
                     <div/> :
                     <Grid item xs={12}>
-                        <DutiesTable source={dutiesDatasource} onEditComplete={onRowChanged}/>
+                        <DutiesTable editable={props.editable} source={props.duties} onEditComplete={onRowChanged}/>
                     </Grid>
                 }
-                <Grid item xs={12}>
-                    <FormControl fullWidth>
-                        <InputLabel id="currencyId">Кто платил</InputLabel>
-                        <Select
-                            required
-                            labelId="payerLabelId"
-                            id="payerSelectId"
-                            onChange={onPayerChange}
-                            className={classes.menuItem}
-                            value={currentPayer}
-                        >
-                            {props.participants.map((participant, index) => {
-                                return <MenuItem key={index} value={index}>{participant}</MenuItem>
-                            })}
-                        </Select>
-                    </FormControl>
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField required id="duty" label="За что" fullWidth value={paymentSubject}
-                               onChange={onPaymentSubjectChange}/>
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField required
-                               id="sum"
-                               label="Сколько"
-                               type="number"
-                               fullWidth
-                               onChange={onPaymentAmountChange}
-                               value={paymentAmount}
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <FormControl fullWidth>
-                        <InputLabel id="splitMethodInputId">Как делить</InputLabel>
-                        <Select
-                            labelId="splitMethodLabel"
-                            id="splitMethodId"
-                            onChange={props.onSplitMethodChange}
-                            value={props.splitMethod}
-                            className={classes.menuItem}>
-                            <MenuItem value={1}>Между всеми поровну</MenuItem>
-                            <MenuItem value={2}>Между кем-то поровну</MenuItem>
-                            <MenuItem value={3}>Другое</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Grid>
-                <Grid item xs={12}>
-                    <FormControl fullWidth>
-                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <KeyboardDatePicker
-                                disableToolbar
-                                variant="inline"
-                                format="MM/dd/yyyy"
-                                margin="normal"
-                                id="date-picker-inline"
-                                label="Когда"
-                                value={props.selectedDate}
-                                onChange={props.onDateChange}
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change date',
-                                }}
-                            />
-                        </MuiPickersUtilsProvider>
-                    </FormControl>
-                </Grid>
-
-                <Grid container justify="center">
-                    <Button variant="contained" color="secondary" onClick={onAddDuty}>
-                        Добавить расход
-                    </Button>
-                </Grid>
+                <AddDutyForm onPayerChange={onPayerChange}
+                             classes={classes}
+                             currentPayer={currentPayer}
+                             participants={props.participants}
+                             paymentSubject={paymentSubject}
+                             onPaymentSubjectChange={onPaymentSubjectChange}
+                             onPaymentAmountChange={onPaymentAmountChange}
+                             paymentAmount={paymentAmount}
+                             onSplitMethodChange={props.onSplitMethodChange}
+                             splitMethod={props.splitMethod}
+                             selectedDate={props.selectedDate}
+                             onDateChange={props.onDateChange}
+                             onAddDuty={onAddDuty}
+                />
             </Grid>
         </React.Fragment>
     );

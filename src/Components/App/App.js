@@ -47,6 +47,11 @@ const App = () => {
         setIsAuthenticated(false);
         setUser()
     }
+
+    const renderPartyDetailPage = (props) => {
+        return <PartyDetailPage partyId={props.match.params.id}/>
+    }
+
     return (
         <AuthContext.Provider value={{userIdInStorage, setAuthTokens: setUserId}}>
             <React.Fragment>
@@ -69,7 +74,3 @@ const App = () => {
     );
 };
 export default App;
-
-const renderPartyDetailPage = (props) => {
-    return <PartyDetailPage partyId={props.match.params.id}/>
-}
