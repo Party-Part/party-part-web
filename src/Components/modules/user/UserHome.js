@@ -4,6 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import {makeStyles} from "@material-ui/core/styles";
 import Typography from "../components/Typography";
+import {UserParties} from "./UsersParties";
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -46,6 +47,11 @@ const useStyles = makeStyles((theme) => ({
 
 function UserHome(props) {
     const classes = useStyles();
+    const [parties, setParties] = React.useState([
+        {partyId: "74", name: "Тест пати"},
+        {partyId: "75", name: "Тест пати еще"},
+        {partyId: "76", name: "Тест пати еще!"}
+    ])
 
     return (
         <Container className={classes.layout}>
@@ -71,7 +77,8 @@ function UserHome(props) {
                     </Grid>
                     <Grid item
                           className={classes.grid}>
-                        <Typography> Вы не участвовали ни в одном пати </Typography>
+
+                        <UserParties parties={parties}/>
                     </Grid>
                 </Grid>
             </Paper>
