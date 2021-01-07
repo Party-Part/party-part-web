@@ -8,7 +8,14 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import PaymentsTable from "./PaymentsTable";
 import {getUserInfoById} from "../../../service/user";
-import {addPartyEntry, calculateParty, getParty, getPartyEntries, getPartyMembers} from "../../../service/party";
+import {
+    addPartyEntry,
+    calculateParty,
+    deletePartyEntry,
+    getParty,
+    getPartyEntries,
+    getPartyMembers
+} from "../../../service/party";
 import DutiesForm from "../create/DutiesForm";
 
 const useStyles = makeStyles((theme) => ({
@@ -174,6 +181,12 @@ function PartyDetailPage(props) {
             .then(p => setParticipants(p))
     }, [])
 
+    function removeDuty(id) {
+        deletePartyEntry(props.partyId, id).then(res =>
+            setDuties(prevState => [...prevState.filter(d => d.id !== id)])
+        )
+    }
+
     return (
         <Container className={classes.layout}>
             <Paper className={classes.paper}>
@@ -284,6 +297,7 @@ function PartyDetailPage(props) {
                                         onDateChange={handleDateChange}
                                         onAddDuty={handleAddDuty}
                                         onChangeDuty={handleChangeDuty}
+                                        onDutyRemoved={removeDuty}
                                     />
                                 </div>
                             </Grid>

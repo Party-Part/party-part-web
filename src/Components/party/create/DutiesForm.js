@@ -16,32 +16,17 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-// const initDataSource = (props) => {
-//     const result = []
-//     console.log('Initializing duties...')
-//     for (var key in props.duties) {
-//         console.log(props.duties[key])
-//         result.push({
-//             id: props.duties[key].id,
-//             whoPaid: props.duties[key].whoPaid,
-//             forWhat: props.duties[key].forWhat,
-//             amount: props.duties[key].amount,
-//             currency: props.duties[key].currency
-//         })
-//     }
-//     console.log(result)
-//     return result
-// }
-
 export default function DutiesForm(props) {
     const classes = useStyles();
 
     const [currentPayer, setCurrentPayer] = React.useState("");
     const [paymentSubject, setPaymentSubject] = React.useState("")
     const [paymentAmount, setPaymentAmount] = React.useState(0);
+    const [selected, setSelected] = React.useState(null);
 
-    // const [dutiesDatasource, setDutiesDatasource] = React.useState(initDataSource(props));
-    // const [dutiesDatasource, setDutiesDatasource] = React.useState();
+    function onRowSelected(id) {
+        setSelected(id);
+    }
 
     const onPayerChange = (e: React.FormEvent) => {
         console.log('Payer changed')
@@ -59,13 +44,6 @@ export default function DutiesForm(props) {
 
     const onAddDuty = (e: React.FormEvent) => {
         props.onAddDuty(props.nextDutyId, currentPayer, paymentSubject, paymentAmount)
-        // setDutiesDatasource(prevState => [...prevState, {
-        //     id: props.nextDutyId,
-        //     whoPaid: props.participants[currentPayer],
-        //     forWhat: paymentSubject,
-        //     amount: paymentAmount,
-        //     currency: 'рублей'
-        // }]);
         setPaymentSubject("");
         setPaymentAmount(0);
     }
@@ -81,7 +59,6 @@ export default function DutiesForm(props) {
     const onRowChanged = useCallback(({value, columnId, rowIndex}) => {
         const data = [...props.duties];
         data[rowIndex][columnId] = value;
-        // setDutiesDatasource(data);
         props.onChangeDuty(data[rowIndex].id, data[rowIndex].whoPaid, data[rowIndex].forWhat, data[rowIndex].amount)
     }, [props.duties])
 
@@ -91,7 +68,10 @@ export default function DutiesForm(props) {
                 {isEmpty(props.duties) ?
                     <div/> :
                     <Grid item xs={12}>
-                        <DutiesTable editable={props.editable} source={props.duties} onEditComplete={onRowChanged}/>
+                        <DutiesTable editable={props.editable}
+                                     source={props.duties}
+                                     onEditComplete={onRowChanged}
+                                     onRowSelected={onRowSelected}/>
                     </Grid>
                 }
                 <AddDutyForm onPayerChange={onPayerChange}
@@ -107,6 +87,8 @@ export default function DutiesForm(props) {
                              selectedDate={props.selectedDate}
                              onDateChange={props.onDateChange}
                              onAddDuty={onAddDuty}
+                             selected={selected}
+                             onDutyRemoved={props.onDutyRemoved}
                 />
             </Grid>
         </React.Fragment>

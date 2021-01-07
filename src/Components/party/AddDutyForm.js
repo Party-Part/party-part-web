@@ -91,10 +91,19 @@ export function AddDutyForm(props) {
                 </FormControl>
             </Grid>
 
-            <Grid container justify="center">
-                <Button variant="contained" color="secondary" onClick={props.onAddDuty}>
-                    Добавить расход
-                </Button>
+            <Grid container spacing={2} justify="center">
+                <Grid item>
+                    <Button variant="contained" color="secondary" onClick={props.onAddDuty}>
+                        Добавить расход
+                    </Button>
+                </Grid>
+                {props.selected != null ?
+                    (<Grid item>
+                        <Button variant="contained" color="primary" onClick={() => props.onDutyRemoved(props.selected)}>
+                            Удалить
+                        </Button>
+                    </Grid>) : (<div/>)
+                }
             </Grid>
         </Grid>
     )

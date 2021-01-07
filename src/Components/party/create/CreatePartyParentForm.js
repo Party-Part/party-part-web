@@ -12,7 +12,7 @@ import DutiesForm from "./DutiesForm";
 import {Link} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Typography from "../../modules/components/Typography";
-import {addPartyEntry, addPartyMember, createParty, deletePartyMember} from "../../../service/party";
+import {addPartyEntry, addPartyMember, createParty, deletePartyEntry, deletePartyMember} from "../../../service/party";
 import {registerAnon} from "../../../service/user";
 
 const useStyles = makeStyles((theme) => ({
@@ -222,6 +222,12 @@ export default function CreatePartyParentForm(props) {
         }
     }
 
+    function removeDuty(id) {
+        deletePartyEntry(props.partyId, id).then(res =>
+            setDuties(prevState => [...prevState.filter(d => d.id !== id)])
+        )
+    }
+
     function findUserIdByName(name) {
         console.log('Finding ' + name + 'in...', participants)
         for (let user of participants) {
@@ -258,6 +264,7 @@ export default function CreatePartyParentForm(props) {
                     onDateChange={handlers.handleDateChange}
                     onAddDuty={handlers.handleAddDuty}
                     onChangeDuty={handlers.handleChangeDuty}
+                    onDutyRemoved={removeDuty}
                 />;
             case 3:
                 return <Review
