@@ -13,7 +13,7 @@ import withRoot from "../withRoot";
 import Redirect from "react-router-dom/es/Redirect";
 import {useAuth} from "../../auth/Auth";
 import Alert from '@material-ui/lab/Alert';
-import {login} from '../../../service/user'
+import {login} from '../../../users/user'
 
 const useStyles = makeStyles((theme) => ({
     layout: {

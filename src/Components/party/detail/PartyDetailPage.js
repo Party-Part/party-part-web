@@ -7,7 +7,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import PaymentsTable from "./PaymentsTable";
-import {getUserInfoById} from "../../../service/user";
+import {getUserInfoById} from "../../../users/user";
 import {
     addPartyEntry,
     calculateParty,

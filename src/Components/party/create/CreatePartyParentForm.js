@@ -13,7 +13,7 @@ import {Link} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Typography from "../../modules/components/Typography";
 import {addPartyEntry, addPartyMember, createParty, deletePartyEntry, deletePartyMember} from "../../../service/party";
-import {registerAnon} from "../../../service/user";
+import {registerAnon} from "../../../users/user";
 
 const useStyles = makeStyles((theme) => ({
     layout: {
