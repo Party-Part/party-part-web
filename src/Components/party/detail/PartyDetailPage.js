@@ -65,6 +65,7 @@ function PartyDetailPage(props) {
     const classes = useStyles();
 
     const userIdFromStorage = JSON.parse(localStorage.getItem("userId"));
+    const user = JSON.parse(localStorage.getItem("user"));
 
     const [payments, setPayments] = React.useState([]);
     const [partyInfo, setPartyInfo] = React.useState({
@@ -321,6 +322,7 @@ function PartyDetailPage(props) {
                                         participants={participants}
                                         onAddParticipant={handleAddParticipant}
                                         onDeleteParticipant={handleDeleteParticipant}
+                                        user={user}
                                     />
                                 </div>
                             </Grid>

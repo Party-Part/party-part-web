@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         minWidth: '20vh',
-        minHeight: '20vh'
+        minHeight: '15vh'
     },
     title: {
         fontSize: 14,

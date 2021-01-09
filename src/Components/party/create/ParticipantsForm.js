@@ -16,8 +16,13 @@ const useStyles = makeStyles((theme) => ({
     button: {
         marginTop: theme.spacing(2)
     },
-    nested: {
-        margin: theme.spacing(0.5)
+    chipUser: {
+        margin: theme.spacing(0.5),
+        backgroundColor: theme.palette.secondary.light
+    },
+    chip: {
+        margin: theme.spacing(0.5),
+        // backgroundColor: theme.palette.primary.light
     }
 }));
 
@@ -43,6 +48,9 @@ export default function ParticipantsForm(props) {
         }
     }
 
+    console.log(props.participants);
+    console.log(props.user)
+
     return (
         <React.Fragment>
             <Grid container spacing={2}>
@@ -56,7 +64,7 @@ export default function ParticipantsForm(props) {
                                 label={participant.name}
                                 onDelete={() => props.onDeleteParticipant(index)}
                                 variant="outlined"
-                                className={classes.nested}
+                                className={participant.userId == props.user.user_id ? classes.chipUser : classes.chip}
                             />
                         })}
                     </Grid>
