@@ -29,7 +29,10 @@ const useStyles = makeStyles((theme) => ({
             marginBottom: theme.spacing(6),
         },
     },
-    root: {},
+    root: {
+        minWidth: '20vh',
+        minHeight: '20vh'
+    },
     title: {
         fontSize: 14,
     },
@@ -51,7 +54,6 @@ export function UserParties(props) {
         <Grid container
               item
               direction="raw"
-              justify="center"
               alignItems="flex-start"
               spacing={2}>
             {props.parties.map(p => {

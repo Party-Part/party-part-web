@@ -63,24 +63,26 @@ function UserHome(props) {
                       container
                       direction="column"
                       justify="center"
-                      alignItems="center"
+                      alignItems="flex-start"
                       spacing={4}>
 
                     <Grid item
+                          container
+                          direction="raw"
+                          justify="center"
                           className={classes.grid}>
-                        <Typography> {props.user.name} </Typography>
+                        <Grid item>
+                            <Typography marked='center' variant='h5'> {props.user.login} </Typography>
+                        </Grid>
                     </Grid>
-                    <Grid item
-                          className={classes.grid}>
-                        <Typography> {props.user.login} </Typography>
-                    </Grid>
-                    <Grid item
-                          className={classes.grid}>
-                        <Typography> {props.user.email} </Typography>
-                    </Grid>
-                    <Grid item
-                          className={classes.grid}>
 
+                    <Grid item
+                          className={classes.grid}>
+                        <Typography variant='h6'> Ваши вечеринки: </Typography>
+                    </Grid>
+
+                    <Grid item
+                          className={classes.grid}>
                         <UserParties parties={parties}/>
                     </Grid>
                 </Grid>

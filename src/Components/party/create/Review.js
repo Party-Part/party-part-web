@@ -51,7 +51,7 @@ export default function Review(props) {
             <List disablePadding>
                 {aggregate(props.duties).map((info, i) => {
                     return <ListItem key={i} className={classes.listItem}>
-                        <ListItemText primary={props.participants[info.name]}/>
+                        <ListItemText primary={info.name}/>
                         <Typography variant="body1">потратил(а) {info.amount}</Typography>
                     </ListItem>
                 })}
