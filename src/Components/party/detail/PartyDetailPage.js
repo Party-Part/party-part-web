@@ -67,6 +67,9 @@ function PartyDetailPage(props) {
     const userIdFromStorage = JSON.parse(localStorage.getItem("userId"));
     const user = JSON.parse(localStorage.getItem("user"));
 
+    const [youSpent, setYouSpent] = React.useState(0);
+    const [youWillGet, setYouWillGet] = React.useState(0);
+    const [youWillSend, setYouWillSend] = React.useState(0);
     const [payments, setPayments] = React.useState([]);
     const [partyInfo, setPartyInfo] = React.useState({
         partyId: "",
@@ -164,6 +167,8 @@ function PartyDetailPage(props) {
             .then(async calculated => {
                 return Promise.all(calculated.map(async p => {
                     return {
+                        name_source_id: p.name_source,
+                        name_target_id: p.name_target,
                         name_source: (await findUserNameById(p.name_source)).name,
                         name_target: (await findUserNameById(p.name_target)).name,
                         amount: p.amount
@@ -193,7 +198,8 @@ function PartyDetailPage(props) {
                         whoPaid: (await findUserNameById(entry.userWhoPaidId)).name,
                         forWhat: entry.name,
                         amount: entry.cost,
-                        currency: entry.currency
+                        currency: entry.currency,
+                        whoPaidId: entry.userWhoPaidId
                     }
                 }))
             })
@@ -205,6 +211,29 @@ function PartyDetailPage(props) {
             .then(res => res.data)
             .then(p => setParticipants(p))
     }, [])
+
+    useEffect(() => {
+        var willGet = 0
+        var willSend = 0
+        for (let p of payments) {
+            if (p.name_source_id == user.user_id) {
+                willSend += parseInt(p.amount);
+            } else if (p.name_target_id == user.user_id) {
+                willGet += parseInt(p.amount);
+            }
+        }
+
+        var spent = 0
+        for (let d of duties) {
+            if (d.whoPaidId == user.user_id) {
+                spent += parseInt(d.amount);
+            }
+        }
+
+        setYouWillGet(willGet)
+        setYouWillSend(willSend)
+        setYouSpent(spent)
+    }, [payments, duties])
 
     function removeDuty(id) {
         deletePartyEntry(props.partyId, id).then(res =>
@@ -253,7 +282,7 @@ function PartyDetailPage(props) {
                                             Вы потратили
                                         </Typography>
                                         <Typography variant="h4">
-                                            100
+                                            {youSpent}
                                         </Typography>
                                         <Typography className={classes.pos} color="textSecondary">
                                             рублей
@@ -271,7 +300,7 @@ function PartyDetailPage(props) {
                                             Вам должны
                                         </Typography>
                                         <Typography variant="h4">
-                                            50
+                                            {youWillGet}
                                         </Typography>
                                         <Typography className={classes.pos} color="textSecondary">
                                             рублей
@@ -289,7 +318,7 @@ function PartyDetailPage(props) {
                                             Вы задолжали
                                         </Typography>
                                         <Typography variant="h4">
-                                            49
+                                            {youWillSend}
                                         </Typography>
                                         <Typography className={classes.pos} color="textSecondary">
                                             рублей
