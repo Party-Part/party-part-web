@@ -64,7 +64,7 @@ export default function CreatePartyParentForm(props) {
 
     const [partyName, setPartyName] = React.useState("");
     const [currency, setCurrency] = React.useState("");
-    const [splitMethod, setSplitMethod] = React.useState("")
+    const [splitMethod, setSplitMethod] = React.useState(1)
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [participants, setParticipants] = React.useState([]);
     const [duties, setDuties] = React.useState([])

@@ -7,16 +7,19 @@ import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import PaymentsTable from "./PaymentsTable";
-import {getUserInfoById} from "../../../users/user";
+import {getUserInfoById, registerAnon} from "../../../users/user";
 import {
     addPartyEntry,
+    addPartyMember,
     calculateParty,
     deletePartyEntry,
+    deletePartyMember,
     getParty,
     getPartyEntries,
     getPartyMembers
 } from "../../../service/party";
 import DutiesForm from "../create/DutiesForm";
+import ParticipantsForm from "../create/ParticipantsForm";
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -50,7 +53,8 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: 6,
     },
     table: {
-        paddingTop: 25
+        paddingTop: 25,
+        paddingBottom: 25
     },
     grid: {
         padding: theme.spacing(4)
@@ -69,10 +73,30 @@ function PartyDetailPage(props) {
         name: "Название..."
     });
     const [duties, setDuties] = React.useState({});
-    const [splitMethod, setSplitMethod] = React.useState("")
+    const [splitMethod, setSplitMethod] = React.useState(1)
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [participants, setParticipants] = React.useState([]);
     const [nextDutyId, setNextDutyId] = React.useState(0);
+
+    const handleAddParticipant = (participant) => {
+        registerAnon(participant)
+            .then(res => res.json())
+            .then(registered => {
+                setParticipants((prevState) => [...prevState, registered])
+                return registered;
+            })
+            .then(registered => {
+                    addPartyMember(props.partyId, parseInt(registered.user_id)).then(res => console.log(res))
+                }
+            )
+    }
+
+    const handleDeleteParticipant = (index) => {
+        // todo: call delete user in db
+        deletePartyMember(props.partyId, participants[index].userId)
+            .then(res => console.log(res))
+        setParticipants((prevState) => [...prevState.filter((p, i) => i !== index)]);
+    }
 
     const handleSplitMethodChange = (e: React.FormEvent) => {
         e.preventDefault();
@@ -281,9 +305,27 @@ function PartyDetailPage(props) {
                               direction="column"
                               justify="center">
                             <Grid item xs={12}>
+                                <Typography variant="h6">Долги: </Typography>
+                            </Grid>
+                            <Grid item xs={12}>
                                 <div className={classes.table}>
                                     <PaymentsTable source={payments}/>
                                 </div>
+                            </Grid>
+                            <Grid item xs={12} spacing={2}>
+                                <Typography variant="h6">Участники: </Typography>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <div className={classes.table}>
+                                    <ParticipantsForm
+                                        participants={participants}
+                                        onAddParticipant={handleAddParticipant}
+                                        onDeleteParticipant={handleDeleteParticipant}
+                                    />
+                                </div>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Typography variant="h6">Затраты: </Typography>
                             </Grid>
                             <Grid item xs={12} spacing={2}>
                                 <div className={classes.table}>
