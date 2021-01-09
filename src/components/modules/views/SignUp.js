@@ -13,7 +13,7 @@ import FormButton from "../form/FormButton";
 import FormFeedback from "../form/FormFeedback";
 import withRoot from "../withRoot";
 import {useAuth} from "../../auth/Auth";
-import {register} from "../../../service/user";
+import {register} from "../../../users/user";
 
 
 const useStyles = makeStyles((theme) => ({

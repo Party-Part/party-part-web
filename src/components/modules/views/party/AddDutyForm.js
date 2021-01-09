@@ -50,7 +50,7 @@ export function AddDutyForm(props) {
                 <TextField required
                            id="sum"
                            label="Сколько"
-                           type="number"
+                           // type="number"
                            fullWidth
                            onChange={props.onPaymentAmountChange}
                            value={props.paymentAmount}

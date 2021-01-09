@@ -2,8 +2,8 @@ import React, {useCallback} from 'react';
 import Grid from '@material-ui/core/Grid';
 import 'date-fns';
 import {makeStyles} from "@material-ui/core/styles";
-import DutiesTable from "../DutiesTable";
-import {AddDutyForm} from "../AddDutyForm";
+import DutiesTable from "./DutiesTable";
+import {AddDutyForm} from "./AddDutyForm";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +21,7 @@ export default function DutiesForm(props) {
 
     const [currentPayer, setCurrentPayer] = React.useState("");
     const [paymentSubject, setPaymentSubject] = React.useState("")
-    const [paymentAmount, setPaymentAmount] = React.useState(0);
+    const [paymentAmount, setPaymentAmount] = React.useState("")
     const [selected, setSelected] = React.useState(null);
 
     function onRowSelected(id) {

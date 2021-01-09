@@ -29,7 +29,10 @@ const useStyles = makeStyles((theme) => ({
             marginBottom: theme.spacing(6),
         },
     },
-    root: {},
+    root: {
+        minWidth: '20vh',
+        minHeight: '15vh'
+    },
     title: {
         fontSize: 14,
     },
@@ -51,11 +54,10 @@ export function UserParties(props) {
         <Grid container
               item
               direction="raw"
-              justify="center"
               alignItems="flex-start"
-              spacing={2}>
+              spacing={4}>
             {props.parties.map(p => {
-                return <Grid item xs={4}>
+                return <Grid item xs={6}>
                     <Card className={classes.root}>
                         <CardContent>
                             <Typography variant="h6">

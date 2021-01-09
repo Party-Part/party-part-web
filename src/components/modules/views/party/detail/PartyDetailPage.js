@@ -2,21 +2,24 @@ import Container from "@material-ui/core/Container";
 import React, {useEffect} from "react";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Typography from "../../modules/components/Typography";
+import Typography from "../../../components/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import PaymentsTable from "./PaymentsTable";
-import {getUserInfoById} from "../../../service/user";
+import {getUserInfoById, registerAnon} from "../../../../../users/user";
 import {
     addPartyEntry,
+    addPartyMember,
     calculateParty,
     deletePartyEntry,
+    deletePartyMember,
     getParty,
     getPartyEntries,
     getPartyMembers
-} from "../../../service/party";
-import DutiesForm from "../create/DutiesForm";
+} from "../../../../../service/party";
+import DutiesForm from "../DutiesForm";
+import ParticipantsForm from "../ParticipantsForm";
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -50,7 +53,8 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: 6,
     },
     table: {
-        paddingTop: 25
+        paddingTop: 25,
+        paddingBottom: 25
     },
     grid: {
         padding: theme.spacing(4)
@@ -61,6 +65,11 @@ function PartyDetailPage(props) {
     const classes = useStyles();
 
     const userIdFromStorage = JSON.parse(localStorage.getItem("userId"));
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    const [youSpent, setYouSpent] = React.useState(0);
+    const [youWillGet, setYouWillGet] = React.useState(0);
+    const [youWillSend, setYouWillSend] = React.useState(0);
 
     const [payments, setPayments] = React.useState([]);
     const [partyInfo, setPartyInfo] = React.useState({
@@ -68,11 +77,30 @@ function PartyDetailPage(props) {
         userCreatorId: "",
         name: "Название..."
     });
-    const [duties, setDuties] = React.useState({});
-    const [splitMethod, setSplitMethod] = React.useState("")
+    const [duties, setDuties] = React.useState([]);
+    const [splitMethod, setSplitMethod] = React.useState(1)
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [participants, setParticipants] = React.useState([]);
     const [nextDutyId, setNextDutyId] = React.useState(0);
+
+    const handleAddParticipant = (participant) => {
+        registerAnon(participant)
+            .then(res => res.json())
+            .then(registered => {
+                setParticipants((prevState) => [...prevState, registered])
+                return registered;
+            })
+            .then(registered => {
+                    addPartyMember(props.partyId, parseInt(registered.user_id)).then(res => console.log(res))
+                }
+            )
+    }
+
+    const handleDeleteParticipant = (index) => {
+        deletePartyMember(props.partyId, parseInt(participants[index].userId))
+            .then(res => console.log(res))
+        setParticipants((prevState) => [...prevState.filter((p, i) => i !== index)]);
+    }
 
     const handleSplitMethodChange = (e: React.FormEvent) => {
         e.preventDefault();
@@ -116,14 +144,6 @@ function PartyDetailPage(props) {
         return resolve
     }
 
-    function findUserNameByIdLocal(id) {
-        for (let participant of participants) {
-            if (participant.userId === id) {
-                return participant.name;
-            }
-        }
-    }
-
     useEffect(() => {
         calculateParty(props.partyId)
             .then(res => res.data)
@@ -139,6 +159,8 @@ function PartyDetailPage(props) {
             .then(async calculated => {
                 return Promise.all(calculated.map(async p => {
                     return {
+                        name_source_id: p.name_source,
+                        name_target_id: p.name_target,
                         name_source: (await findUserNameById(p.name_source)).name,
                         name_target: (await findUserNameById(p.name_target)).name,
                         amount: p.amount
@@ -168,7 +190,8 @@ function PartyDetailPage(props) {
                         whoPaid: (await findUserNameById(entry.userWhoPaidId)).name,
                         forWhat: entry.name,
                         amount: entry.cost,
-                        currency: entry.currency
+                        currency: entry.currency,
+                        whoPaidId: entry.userWhoPaidId
                     }
                 }))
             })
@@ -180,6 +203,29 @@ function PartyDetailPage(props) {
             .then(res => res.data)
             .then(p => setParticipants(p))
     }, [])
+
+    useEffect(() => {
+        var willGet = 0
+        var willSend = 0
+        for (let p of payments) {
+            if (p.name_source_id == user.user_id) {
+                willSend += parseInt(p.amount);
+            } else if (p.name_target_id == user.user_id) {
+                willGet += parseInt(p.amount);
+            }
+        }
+
+        var spent = 0
+        for (let d of duties) {
+            if (d.whoPaidId == user.user_id) {
+                spent += parseInt(d.amount);
+            }
+        }
+
+        setYouWillGet(willGet)
+        setYouWillSend(willSend)
+        setYouSpent(spent)
+    }, [payments, duties])
 
     function removeDuty(id) {
         deletePartyEntry(props.partyId, id).then(res =>
@@ -208,10 +254,6 @@ function PartyDetailPage(props) {
                           alignItems="flex-start"
                           spacing={3}>
 
-                        {/*<Grid item xs={12}>*/}
-                        {/*    <Typography variant="body1"> Айди {props.partyId}</Typography>*/}
-                        {/*</Grid>*/}
-
                         <Grid item xs={12}>
                             <Typography variant="h6">{partyInfo.name}</Typography>
                         </Grid>
@@ -228,15 +270,12 @@ function PartyDetailPage(props) {
                                             Вы потратили
                                         </Typography>
                                         <Typography variant="h4">
-                                            100
+                                            {youSpent}
                                         </Typography>
                                         <Typography className={classes.pos} color="textSecondary">
                                             рублей
                                         </Typography>
                                     </CardContent>
-                                    {/*<CardActions>*/}
-                                    {/*    <Button size="small">Посмотеть затраты</Button>*/}
-                                    {/*</CardActions>*/}
                                 </Card>
                             </Grid>
                             <Grid item xs={4}>
@@ -246,15 +285,12 @@ function PartyDetailPage(props) {
                                             Вам должны
                                         </Typography>
                                         <Typography variant="h4">
-                                            50
+                                            {youWillGet}
                                         </Typography>
                                         <Typography className={classes.pos} color="textSecondary">
                                             рублей
                                         </Typography>
                                     </CardContent>
-                                    {/*<CardActions>*/}
-                                    {/*    <Button size="small">Посмотеть затраты</Button>*/}
-                                    {/*</CardActions>*/}
                                 </Card>
                             </Grid>
                             <Grid item xs={4}>
@@ -264,15 +300,12 @@ function PartyDetailPage(props) {
                                             Вы задолжали
                                         </Typography>
                                         <Typography variant="h4">
-                                            49
+                                            {youWillSend}
                                         </Typography>
                                         <Typography className={classes.pos} color="textSecondary">
                                             рублей
                                         </Typography>
                                     </CardContent>
-                                    {/*<CardActions>*/}
-                                    {/*    <Button size="small">Посмотеть затраты</Button>*/}
-                                    {/*</CardActions>*/}
                                 </Card>
                             </Grid>
                         </Grid>
@@ -281,9 +314,28 @@ function PartyDetailPage(props) {
                               direction="column"
                               justify="center">
                             <Grid item xs={12}>
+                                <Typography variant="h6">Долги: </Typography>
+                            </Grid>
+                            <Grid item xs={12}>
                                 <div className={classes.table}>
                                     <PaymentsTable source={payments}/>
                                 </div>
+                            </Grid>
+                            <Grid item xs={12} spacing={2}>
+                                <Typography variant="h6">Участники: </Typography>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <div className={classes.table}>
+                                    <ParticipantsForm
+                                        participants={participants}
+                                        onAddParticipant={handleAddParticipant}
+                                        onDeleteParticipant={handleDeleteParticipant}
+                                        user={user}
+                                    />
+                                </div>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Typography variant="h6">Затраты: </Typography>
                             </Grid>
                             <Grid item xs={12} spacing={2}>
                                 <div className={classes.table}>

@@ -6,14 +6,20 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import PartyForm from './PartyForm';
-import ParticipantsForm from './ParticipantsForm';
+import ParticipantsForm from '../ParticipantsForm';
 import Review from './Review';
-import DutiesForm from "./DutiesForm";
+import DutiesForm from "../DutiesForm";
 import {Link} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
-import Typography from "../../modules/components/Typography";
-import {addPartyEntry, addPartyMember, createParty, deletePartyEntry, deletePartyMember} from "../../../service/party";
-import {registerAnon} from "../../../service/user";
+import Typography from "../../../components/Typography";
+import {
+    addPartyEntry,
+    addPartyMember,
+    createParty,
+    deletePartyEntry,
+    deletePartyMember
+} from "../../../../../service/party";
+import {registerAnon} from "../../../../../users/user";
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -57,20 +63,20 @@ const steps = ['Пати', 'Участники', 'Расходы', 'Провер
 
 export default function CreatePartyParentForm(props) {
     const userIdFromStorage = JSON.parse(localStorage.getItem("userId"));
+    const user = JSON.parse(localStorage.getItem("user"));
 
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
     const [nextDutyId, setNextDutyId] = React.useState(0);
 
     const [partyName, setPartyName] = React.useState("");
-    const [currency, setCurrency] = React.useState("");
-    const [splitMethod, setSplitMethod] = React.useState("")
+    const [currency, setCurrency] = React.useState(1);
+    const [splitMethod, setSplitMethod] = React.useState(1)
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [participants, setParticipants] = React.useState([]);
     const [duties, setDuties] = React.useState([])
 
-    const [registered, setRegistered] = React.useState([]); // todo: remove this
-    const [partyId, setPartyId] = React.useState();
+    const [partyId, setPartyId] = React.useState(null);
 
     const handlePartyNameChange = (e: React.FormEvent) => {
         e.preventDefault();
@@ -95,7 +101,10 @@ export default function CreatePartyParentForm(props) {
         registerAnon(participant)
             .then(res => res.json())
             .then(registered => {
-                setParticipants((prevState) => [...prevState, registered])
+                setParticipants((prevState) => [...prevState, {
+                    name: registered.name,
+                    userId: registered.user_id
+                }])
                 return registered;
             })
             .then(registered => {
@@ -105,8 +114,7 @@ export default function CreatePartyParentForm(props) {
     }
 
     const handleDeleteParticipant = (index) => {
-        // todo: call delete user in db
-        deletePartyMember(partyId, participants[index].userId)
+        deletePartyMember(partyId, parseInt(participants[index].userId))
             .then(res => console.log(res))
         setParticipants((prevState) => [...prevState.filter((p, i) => i !== index)]);
     }
@@ -146,10 +154,6 @@ export default function CreatePartyParentForm(props) {
         setDuties(copied);
     }
 
-    const onAddRegistered = (participant) => {
-        setRegistered((prevState => [...prevState, participant]));
-    }
-
     const handlers = {
         handlePartyNameChange, handleCurrencyChange, handleSplitMethodChange,
         handleDateChange, handleDeleteParticipant, handleAddParticipant, handleAddDuty, handleChangeDuty
@@ -170,7 +174,6 @@ export default function CreatePartyParentForm(props) {
                 onPartyCreated();
                 break;
             case 1:
-                // registerUsersAndAddToParty();
                 break;
             case 2:
                 break;
@@ -182,25 +185,22 @@ export default function CreatePartyParentForm(props) {
         }
     }
 
-    function registerUsersAndAddToParty() {
-        Promise.all(participants.map(p =>
-            registerAnon(p)
-                .then(r => r.json())
-                .then(registerResult => {
-                    let {user_id, name} = registerResult;
-                    onAddRegistered({id: user_id, name: name});
-                    return addPartyMember(partyId, parseInt(user_id)).then((res => console.log(res)))
-                })
-                .catch(e => console.log(e))
-        )).finally(() => console.log('ok'))
-    }
-
     const onPartyCreated = () => {
         createParty({
             userId: props.user.user_id,
             name: partyName
         }).then(result => {
             setPartyId(result.data.partyId);
+            return result.data.partyId
+        }).then((pId) => {
+            addPartyMember(pId, props.user.user_id)
+                .then((res) => {
+                    return res;
+                })
+                .then(() => setParticipants(prevState => [...prevState, {
+                    userId: props.user.user_id,
+                    name: props.user.name
+                }]))
         })
     }
 
@@ -233,7 +233,7 @@ export default function CreatePartyParentForm(props) {
         for (let user of participants) {
             console.log(user)
             if (user.name === name) {
-                return user.user_id;
+                return user.userId;
             }
         }
     }
@@ -252,6 +252,7 @@ export default function CreatePartyParentForm(props) {
                     participants={participants}
                     onAddParticipant={handlers.handleAddParticipant}
                     onDeleteParticipant={handlers.handleDeleteParticipant}
+                    user={user}
                 />;
             case 2:
                 return <DutiesForm

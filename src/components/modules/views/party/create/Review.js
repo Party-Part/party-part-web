@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Typography from "../../modules/components/Typography";
+import Typography from "../../../components/Typography";
 
 const useStyles = makeStyles((theme) => ({
     listItem: {
@@ -51,7 +51,7 @@ export default function Review(props) {
             <List disablePadding>
                 {aggregate(props.duties).map((info, i) => {
                     return <ListItem key={i} className={classes.listItem}>
-                        <ListItemText primary={props.participants[info.name]}/>
+                        <ListItemText primary={info.name}/>
                         <Typography variant="body1">потратил(а) {info.amount}</Typography>
                     </ListItem>
                 })}

@@ -194,6 +194,66 @@ export function getPartyPayments(partyId) {
   return gateway.request(getPartyPaymentsOperation, parameters)
 }
 
+/**
+ * Get all parties that this user created
+ *
+ * @param {string} memberId The member id
+ * @return {Promise<module:types.ArrayOfParties>} successful operation
+ */
+export function getPartyCreated(memberId) {
+  const parameters = {
+    path: {
+      memberId
+    }
+  }
+  return gateway.request(getPartyCreatedOperation, parameters)
+}
+
+/**
+ * Get all parties that this user take part
+ *
+ * @param {string} memberId The member id
+ * @return {Promise<module:types.ArrayOfParties>} successful operation
+ */
+export function getPartyParticipated(memberId) {
+  const parameters = {
+    path: {
+      memberId
+    }
+  }
+  return gateway.request(getPartyParticipatedOperation, parameters)
+}
+
+/**
+ * Set payment as paid
+ *
+ * @param {string} paymentId The payment id
+ * @return {Promise<object>} successful operation
+ */
+export function setPaymentPaid(paymentId) {
+  const parameters = {
+    path: {
+      paymentId
+    }
+  }
+  return gateway.request(setPaymentPaidOperation, parameters)
+}
+
+/**
+ * Set payment as not paid
+ *
+ * @param {string} paymentId The payment id
+ * @return {Promise<object>} successful operation
+ */
+export function setPaymentReject(paymentId) {
+  const parameters = {
+    path: {
+      paymentId
+    }
+  }
+  return gateway.request(setPaymentRejectOperation, parameters)
+}
+
 const createPartyOperation = {
   path: '/party',
   contentTypes: ['application/json'],
@@ -256,4 +316,24 @@ const calculatePartyOperation = {
 const getPartyPaymentsOperation = {
   path: '/party/{partyId}/payment',
   method: 'get'
+}
+
+const getPartyCreatedOperation = {
+  path: '/member/{memberId}/created',
+  method: 'get'
+}
+
+const getPartyParticipatedOperation = {
+  path: '/member/{memberId}/participated',
+  method: 'get'
+}
+
+const setPaymentPaidOperation = {
+  path: '/payment/{paymentId}/paid',
+  method: 'put'
+}
+
+const setPaymentRejectOperation = {
+  path: '/payment/{paymentId}/reject',
+  method: 'put'
 }
