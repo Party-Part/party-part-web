@@ -97,8 +97,7 @@ function PartyDetailPage(props) {
     }
 
     const handleDeleteParticipant = (index) => {
-        // todo: call delete user in db
-        deletePartyMember(props.partyId, participants[index].userId)
+        deletePartyMember(props.partyId, parseInt(participants[index].userId))
             .then(res => console.log(res))
         setParticipants((prevState) => [...prevState.filter((p, i) => i !== index)]);
     }

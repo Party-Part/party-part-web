@@ -114,8 +114,7 @@ export default function CreatePartyParentForm(props) {
     }
 
     const handleDeleteParticipant = (index) => {
-        // todo: call delete user in db
-        deletePartyMember(partyId, participants[index].userId)
+        deletePartyMember(partyId, parseInt(participants[index].userId))
             .then(res => console.log(res))
         setParticipants((prevState) => [...prevState.filter((p, i) => i !== index)]);
     }
