@@ -64,10 +64,7 @@ const useStyles = makeStyles((theme) => ({
         width: 150,
     },
     footer: {
-        marginTop: 'auto',
-        // position: 'fixed',
-        // bottom: '0',
-        // left: '0'
+        marginTop: 'auto'
     }
 }));
 

@@ -6,14 +6,20 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import PartyForm from './PartyForm';
-import ParticipantsForm from './ParticipantsForm';
+import ParticipantsForm from '../ParticipantsForm';
 import Review from './Review';
-import DutiesForm from "./DutiesForm";
+import DutiesForm from "../DutiesForm";
 import {Link} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
-import Typography from "../../modules/components/Typography";
-import {addPartyEntry, addPartyMember, createParty, deletePartyEntry, deletePartyMember} from "../../../service/party";
-import {registerAnon} from "../../../users/user";
+import Typography from "../../../components/Typography";
+import {
+    addPartyEntry,
+    addPartyMember,
+    createParty,
+    deletePartyEntry,
+    deletePartyMember
+} from "../../../../../service/party";
+import {registerAnon} from "../../../../../users/user";
 
 const useStyles = makeStyles((theme) => ({
     layout: {

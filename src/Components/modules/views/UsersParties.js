@@ -55,9 +55,9 @@ export function UserParties(props) {
               item
               direction="raw"
               alignItems="flex-start"
-              spacing={2}>
+              spacing={4}>
             {props.parties.map(p => {
-                return <Grid item xs={4}>
+                return <Grid item xs={6}>
                     <Card className={classes.root}>
                         <CardContent>
                             <Typography variant="h6">

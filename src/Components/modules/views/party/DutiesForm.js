@@ -2,8 +2,8 @@ import React, {useCallback} from 'react';
 import Grid from '@material-ui/core/Grid';
 import 'date-fns';
 import {makeStyles} from "@material-ui/core/styles";
-import DutiesTable from "../DutiesTable";
-import {AddDutyForm} from "../AddDutyForm";
+import DutiesTable from "./DutiesTable";
+import {AddDutyForm} from "./AddDutyForm";
 
 
 const useStyles = makeStyles((theme) => ({

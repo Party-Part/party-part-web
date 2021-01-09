@@ -2,12 +2,12 @@ import Container from "@material-ui/core/Container";
 import React, {useEffect} from "react";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Typography from "../../modules/components/Typography";
+import Typography from "../../../components/Typography";
 import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import PaymentsTable from "./PaymentsTable";
-import {getUserInfoById, registerAnon} from "../../../users/user";
+import {getUserInfoById, registerAnon} from "../../../../../users/user";
 import {
     addPartyEntry,
     addPartyMember,
@@ -17,9 +17,9 @@ import {
     getParty,
     getPartyEntries,
     getPartyMembers
-} from "../../../service/party";
-import DutiesForm from "../create/DutiesForm";
-import ParticipantsForm from "../create/ParticipantsForm";
+} from "../../../../../service/party";
+import DutiesForm from "../DutiesForm";
+import ParticipantsForm from "../ParticipantsForm";
 
 const useStyles = makeStyles((theme) => ({
     layout: {
@@ -145,14 +145,6 @@ function PartyDetailPage(props) {
         return resolve
     }
 
-    function findUserNameByIdLocal(id) {
-        for (let participant of participants) {
-            if (participant.userId === id) {
-                return participant.name;
-            }
-        }
-    }
-
     useEffect(() => {
         calculateParty(props.partyId)
             .then(res => res.data)
@@ -263,10 +255,6 @@ function PartyDetailPage(props) {
                           alignItems="flex-start"
                           spacing={3}>
 
-                        {/*<Grid item xs={12}>*/}
-                        {/*    <Typography variant="body1"> Айди {props.partyId}</Typography>*/}
-                        {/*</Grid>*/}
-
                         <Grid item xs={12}>
                             <Typography variant="h6">{partyInfo.name}</Typography>
                         </Grid>
@@ -289,9 +277,6 @@ function PartyDetailPage(props) {
                                             рублей
                                         </Typography>
                                     </CardContent>
-                                    {/*<CardActions>*/}
-                                    {/*    <Button size="small">Посмотеть затраты</Button>*/}
-                                    {/*</CardActions>*/}
                                 </Card>
                             </Grid>
                             <Grid item xs={4}>
@@ -307,9 +292,6 @@ function PartyDetailPage(props) {
                                             рублей
                                         </Typography>
                                     </CardContent>
-                                    {/*<CardActions>*/}
-                                    {/*    <Button size="small">Посмотеть затраты</Button>*/}
-                                    {/*</CardActions>*/}
                                 </Card>
                             </Grid>
                             <Grid item xs={4}>
@@ -325,9 +307,6 @@ function PartyDetailPage(props) {
                                             рублей
                                         </Typography>
                                     </CardContent>
-                                    {/*<CardActions>*/}
-                                    {/*    <Button size="small">Посмотеть затраты</Button>*/}
-                                    {/*</CardActions>*/}
                                 </Card>
                             </Grid>
                         </Grid>

@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Typography from "../../modules/components/Typography";
+import Typography from "../../../components/Typography";
 
 const useStyles = makeStyles((theme) => ({
     listItem: {

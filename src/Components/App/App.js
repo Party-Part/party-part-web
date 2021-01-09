@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
-import HelloPage from '../hello/HelloPage'
+import HelloPage from '../modules/views/HelloPage'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import CreatePartyPage from "../party/create/CreatePartyPage";
+import CreatePartyPage from "../modules/views/party/create/CreatePartyPage";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import {makeStyles} from "@material-ui/core/styles";
-import PartyDetailPage from "../party/detail/PartyDetailPage";
+import PartyDetailPage from "../modules/views/party/detail/PartyDetailPage";
 import AppAppBar from "../modules/views/AppAppBar";
 import AppFooter from "../modules/views/AppFooter";
 import SignUp from "../modules/views/SignUp";
@@ -12,17 +11,10 @@ import SignIn from "../modules/views/SignIn";
 import ForgotPassword from "../modules/views/ForgotPassword";
 import PrivateRoute from "../auth/PrivateRoute";
 import {AuthContext} from "../auth/Auth";
-import UserHome from "../modules/user/UserHome";
-
-const useStyles = makeStyles((theme) => ({
-    appBar: {
-        position: 'relative',
-    }
-}));
+import UserHome from "../modules/views/UserHome";
 
 
 const App = () => {
-    const classes = useStyles();
     const userIdFromStorage = JSON.parse(localStorage.getItem("userId"));
     const [userIdInStorage, setUserIdInStorage] = useState(userIdFromStorage);
     const [isAuthenticated, setIsAuthenticated] = useState(userIdInStorage)

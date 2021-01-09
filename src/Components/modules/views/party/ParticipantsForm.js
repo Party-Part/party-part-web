@@ -21,8 +21,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.light
     },
     chip: {
-        margin: theme.spacing(0.5),
-        // backgroundColor: theme.palette.primary.light
+        margin: theme.spacing(0.5)
     }
 }));
 
@@ -47,9 +46,6 @@ export default function ParticipantsForm(props) {
             handleAddParticipant(e)
         }
     }
-
-    console.log(props.participants);
-    console.log(props.user)
 
     return (
         <React.Fragment>
