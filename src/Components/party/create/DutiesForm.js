@@ -21,7 +21,7 @@ export default function DutiesForm(props) {
 
     const [currentPayer, setCurrentPayer] = React.useState("");
     const [paymentSubject, setPaymentSubject] = React.useState("")
-    const [paymentAmount, setPaymentAmount] = React.useState(null);
+    const [paymentAmount, setPaymentAmount] = React.useState("")
     const [selected, setSelected] = React.useState(null);
 
     function onRowSelected(id) {

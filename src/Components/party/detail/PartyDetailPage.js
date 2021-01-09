@@ -70,13 +70,14 @@ function PartyDetailPage(props) {
     const [youSpent, setYouSpent] = React.useState(0);
     const [youWillGet, setYouWillGet] = React.useState(0);
     const [youWillSend, setYouWillSend] = React.useState(0);
+
     const [payments, setPayments] = React.useState([]);
     const [partyInfo, setPartyInfo] = React.useState({
         partyId: "",
         userCreatorId: "",
         name: "Название..."
     });
-    const [duties, setDuties] = React.useState({});
+    const [duties, setDuties] = React.useState([]);
     const [splitMethod, setSplitMethod] = React.useState(1)
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [participants, setParticipants] = React.useState([]);
