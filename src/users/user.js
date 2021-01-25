@@ -1,3 +1,7 @@
+const serverPath = 'http://prtprt.ru';
+const usersPort = '8081';
+const usersServicePath = serverPath + ':' + usersPort;
+
 export function login(login, password) {
     const requestOptions = {
         method: 'POST',
@@ -9,7 +13,7 @@ export function login(login, password) {
         })
     };
 
-    return fetch('http://130.193.43.122:8081/users/login', requestOptions)
+    return fetch(usersServicePath + '/users/login', requestOptions)
 }
 
 
@@ -25,7 +29,7 @@ export function register(userToRegister) {
             email: userToRegister.email
         })
     };
-    return fetch('http://130.193.43.122:8081/users', requestOptions)
+    return fetch(usersServicePath + '/users', requestOptions)
 }
 
 export function registerAnon(name) {
@@ -37,7 +41,7 @@ export function registerAnon(name) {
             name: name
         })
     };
-    return fetch('http://130.193.43.122:8081/users/anon', requestOptions)
+    return fetch(usersServicePath + '/users/anon', requestOptions)
 }
 
 export function getUserInfoById(id) {
@@ -45,5 +49,5 @@ export function getUserInfoById(id) {
         method: 'GET',
         credentials: 'include',
     };
-    return fetch('http://130.193.43.122:8081/users/id/' + id, requestOptions)
+    return fetch(usersServicePath + '/users/id/' + id, requestOptions)
 }
