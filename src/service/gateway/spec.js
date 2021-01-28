@@ -3,7 +3,7 @@
 const spec = {
   'host': 'prtprt.ru:8080',
   'schemes': [
-    'http'
+    'https'
   ],
   'basePath': '',
   'contentTypes': [],
