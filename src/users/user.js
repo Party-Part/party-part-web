@@ -1,4 +1,4 @@
-const serverPath = 'http://prtprt.ru';
+const serverPath = 'https://prtprt.ru';
 const usersPort = '8081';
 const usersServicePath = serverPath + ':' + usersPort;
 
