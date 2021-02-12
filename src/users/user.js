@@ -1,4 +1,4 @@
-const serverPath = 'localhost';
+const serverPath = 'http://localhost';
 const usersPort = '8081';
 const usersServicePath = serverPath + ':' + usersPort;
 
