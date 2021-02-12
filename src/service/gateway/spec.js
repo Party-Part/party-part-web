@@ -1,7 +1,7 @@
 
 // Auto-generated, edits will be overwritten
 const spec = {
-  'host': 'prtprt.ru:8080',
+  'host': 'localhost:8080',
   'schemes': [
     'https'
   ],
