@@ -1,4 +1,4 @@
-const serverPath = 'https://prtprt.ru';
+const serverPath = 'localhost';
 const usersPort = '8081';
 const usersServicePath = serverPath + ':' + usersPort;
 
