@@ -1,4 +1,4 @@
-const serverPath = 'http://178.154.255.43'; //fixme
+const serverPath = 'http://prtprt.ru'; //fixme: use https
 const usersPort = '8081';
 const usersServicePath = serverPath + ':' + usersPort;
 
