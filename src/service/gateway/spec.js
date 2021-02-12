@@ -3,7 +3,7 @@
 const spec = {
   'host': 'localhost:8080',
   'schemes': [
-    'https'
+    'http'
   ],
   'basePath': '',
   'contentTypes': [],
